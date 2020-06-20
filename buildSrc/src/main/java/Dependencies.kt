@@ -8,6 +8,7 @@ object Versions {
     const val espresso = "3.2.0"
     const val dagger = "2.27"
     const val timber = "4.7.1"
+    const val liveEvent = "1.2.0"
 }
 
 object Sdk {
@@ -29,6 +30,7 @@ object Kotlin {
 object Support {
     const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
+    const val liveEvent = "com.github.hadilq.liveevent:liveevent:${Versions.liveEvent}"
 }
 
 object Testing {

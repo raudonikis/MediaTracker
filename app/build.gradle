@@ -22,7 +22,9 @@ android {
             minifyEnabled false
         }
     }
-
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 dependencies {
@@ -41,4 +43,6 @@ dependencies {
     implementation Navigation.ui
     // Logging
     implementation Timber.timber
+    // LiveEvent
+    implementation Support.liveEvent
 }
