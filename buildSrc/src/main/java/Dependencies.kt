@@ -6,7 +6,7 @@ object Versions {
     const val junit = "4.12"
     const val junitExt = "1.1.1"
     const val espresso = "3.2.0"
-    const val dagger = "2.27"
+    const val dagger = "2.28"
     const val timber = "4.7.1"
     const val liveEvent = "1.2.0"
 }

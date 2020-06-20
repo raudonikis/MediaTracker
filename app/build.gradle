@@ -45,4 +45,7 @@ dependencies {
     implementation Timber.timber
     // LiveEvent
     implementation Support.liveEvent
+    // Dagger
+    implementation Dagger.main
+    kapt Dagger.compiler
 }
