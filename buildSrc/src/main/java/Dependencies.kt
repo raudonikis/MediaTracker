@@ -1,5 +1,5 @@
 object Versions {
-    const val navigation = "2.2.2"
+    const val navigation = "2.3.0-rc01"
     const val appCompat = "1.1.0"
     const val constraintLayout = "1.1.3"
     const val kotlin = "1.3.0"
@@ -7,6 +7,8 @@ object Versions {
     const val junitExt = "1.1.1"
     const val espresso = "3.2.0"
     const val dagger = "2.28"
+    const val daggerHilt = "2.28-alpha"
+    const val daggerHiltLifecycle = "1.0.0-alpha01"
     const val timber = "4.7.1"
     const val liveEvent = "1.2.0"
 }
@@ -47,6 +49,10 @@ object Navigation {
 object Dagger {
     const val main = "com.google.dagger:dagger:${Versions.dagger}"
     const val compiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
+    const val hilt = "com.google.dagger:hilt-android:${Versions.daggerHilt}"
+    const val hiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.daggerHilt}"
+    const val hiltLifecycle = "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.daggerHiltLifecycle}"
+    const val hiltLifecycleCompiler = "androidx.hilt:hilt-compiler:${Versions.daggerHiltLifecycle}"
 }
 
 object Timber {

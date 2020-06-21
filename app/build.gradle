@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: "androidx.navigation.safeargs.kotlin"
 apply plugin: "kotlin-kapt"
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion Sdk.compileSdk
@@ -24,6 +25,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+    kapt {
+        correctErrorTypes true
     }
 }
 
@@ -48,4 +52,8 @@ dependencies {
     // Dagger
     implementation Dagger.main
     kapt Dagger.compiler
+    implementation Dagger.hilt
+    kapt Dagger.hiltCompiler
+    implementation Dagger.hiltLifecycle
+    kapt Dagger.hiltLifecycleCompiler
 }
