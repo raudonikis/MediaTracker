@@ -11,6 +11,7 @@ object Versions {
     const val daggerHiltLifecycle = "1.0.0-alpha01"
     const val timber = "4.7.1"
     const val liveEvent = "1.2.0"
+    const val material = "1.1.0"
 }
 
 object Sdk {
@@ -33,6 +34,7 @@ object Support {
     const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val liveEvent = "com.github.hadilq.liveevent:liveevent:${Versions.liveEvent}"
+    const val material = "com.google.android.material:material:${Versions.material}"
 }
 
 object Testing {
