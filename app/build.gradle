@@ -26,6 +26,10 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
     kapt {
         correctErrorTypes true
     }
@@ -57,4 +61,8 @@ dependencies {
     kapt Dagger.compiler
     kapt Dagger.hiltCompiler
     kapt Dagger.hiltLifecycleCompiler
+    // Networking
+    implementation Networking.retrofit
+    implementation Networking.gson
+    implementation Networking.gsonConverter
 }

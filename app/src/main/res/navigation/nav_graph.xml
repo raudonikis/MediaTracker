@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/watchedFragment"
-        android:name="com.raudonikis.movietracker.watched.WatchedFragment"
+        android:name="com.raudonikis.movietracker.features.watched.WatchedFragment"
         android:label="WatchedFragment"
         tools:layout="@layout/fragment_watched" />
     <fragment
         android:id="@+id/discoverFragment"
-        android:name="com.raudonikis.movietracker.discover.DiscoverFragment"
+        android:name="com.raudonikis.movietracker.features.discover.DiscoverFragment"
         android:label="DiscoverFragment"
         tools:layout="@layout/fragment_discover">
         <action

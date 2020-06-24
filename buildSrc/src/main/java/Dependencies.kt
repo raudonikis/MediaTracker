@@ -12,6 +12,8 @@ object Versions {
     const val timber = "4.7.1"
     const val liveEvent = "1.2.0"
     const val material = "1.1.0"
+    const val retrofit = "2.9.0"
+    const val gson = "2.8.6"
 }
 
 object Sdk {
@@ -59,4 +61,10 @@ object Dagger {
 
 object Timber {
     const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
+}
+
+object Networking {
+    const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+    const val gsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+    const val gson = "com.google.code.gson:gson:${Versions.gson}"
 }
