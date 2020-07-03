@@ -2,6 +2,7 @@ package com.raudonikis.movietracker.di
 
 import com.raudonikis.movietracker.api.MoveInterceptor
 import com.raudonikis.movietracker.api.MovieApiService
+import com.raudonikis.movietracker.constants.MovieApiConstants
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,12 +15,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 @InstallIn(ApplicationComponent::class)
 object NetworkModule {
 
-    private const val MOVIE_API_BASE_URL = "https://api.themoviedb.org/3/"
-
     @Provides
     fun provideMovieApiService(okHttpClient: OkHttpClient): MovieApiService {
         return Retrofit.Builder()
-            .baseUrl(MOVIE_API_BASE_URL)
+            .baseUrl(MovieApiConstants.BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()

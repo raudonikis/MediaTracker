@@ -1,4 +1,4 @@
-package com.raudonikis.movietracker.model
+package com.raudonikis.movietracker.model.response
 
 import com.google.gson.annotations.SerializedName
 

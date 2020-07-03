@@ -1,6 +1,7 @@
-package com.raudonikis.movietracker.model
+package com.raudonikis.movietracker.model.response
 
 import com.google.gson.annotations.SerializedName
+import com.raudonikis.movietracker.model.response.MovieResponse
 
 data class SearchResponse(
     @SerializedName("page")
