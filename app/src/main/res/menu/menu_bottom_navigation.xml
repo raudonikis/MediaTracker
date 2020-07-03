@@ -6,6 +6,11 @@
         android:icon="@drawable/ic_popcorn"
         android:title="Discover"/>
     <item
+        android:id="@+id/searchFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_search"
+        android:title="Search"/>
+    <item
         android:id="@+id/watchedFragment"
         android:enabled="true"
         android:icon="@drawable/ic_seen"
