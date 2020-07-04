@@ -20,7 +20,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
     private fun setUpListeners() {
         button_search.setOnClickListener {
-            viewModel.searchMovies("Spirited away")
+            viewModel.searchMovies(edit_search.editableText.toString())
         }
     }
 }

@@ -3,17 +3,18 @@ package com.raudonikis.movietracker.features.search
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.raudonikis.movietracker.api.MovieApiService
 import com.raudonikis.movietracker.extensions.io
+import com.raudonikis.movietracker.repo.MoviesRepository
 import timber.log.Timber
 
-class SearchViewModel @ViewModelInject constructor(private val movieApiService: MovieApiService) :
+class SearchViewModel @ViewModelInject constructor(private val moviesRepository: MoviesRepository) :
     ViewModel() {
 
     fun searchMovies(query: String) {
         viewModelScope.io {
-            val result = movieApiService.searchMovies(query)
-            Timber.d("result body -> ${result.body()}")
+            moviesRepository.searchMulti(query)
+                .onSuccess { Timber.d("Success -> ${it.totalResults}") }
+                .onFailure { Timber.d("Failure -> $it") }
         }
     }
 }
