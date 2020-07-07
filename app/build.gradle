@@ -65,4 +65,5 @@ dependencies {
     implementation Networking.retrofit
     implementation Networking.gson
     implementation Networking.gsonConverter
+    implementation("io.coil-kt:coil:0.11.0")
 }

@@ -1,7 +1,7 @@
 package com.raudonikis.movietracker.model.response
 
 import com.google.gson.annotations.SerializedName
-import com.raudonikis.movietracker.model.response.KnownForResponse
+import com.raudonikis.movietracker.model.MovieItem
 
 data class MultiResponse(
     @SerializedName("adult")
@@ -46,4 +46,6 @@ data class MultiResponse(
     val voteAverage: Double,
     @SerializedName("vote_count")
     val voteCount: Int
-)
+) {
+    fun toMovieItem(): MovieItem = MovieItem(title, posterPath)
+}

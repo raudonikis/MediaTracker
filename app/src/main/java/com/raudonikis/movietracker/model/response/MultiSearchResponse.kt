@@ -1,7 +1,6 @@
 package com.raudonikis.movietracker.model.response
 
 import com.google.gson.annotations.SerializedName
-import com.raudonikis.movietracker.model.response.MultiResponse
 
 data class MultiSearchResponse(
     @SerializedName("page")
