@@ -39,7 +39,7 @@ data class MultiResponse(
     @SerializedName("release_date")
     val releaseDate: String,
     @SerializedName("title")
-    val title: String,
+    val title: String?,
     @SerializedName("video")
     val isVideo: Boolean,
     @SerializedName("vote_average")

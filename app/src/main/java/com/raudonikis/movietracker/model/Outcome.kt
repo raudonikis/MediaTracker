@@ -39,6 +39,13 @@ sealed class Outcome<out T> {
         }
     }
 
+    inline fun <C> map(transform: (T) -> C): Outcome<C> =
+        when (this) {
+            is Success -> success(transform(data))
+            is Failure -> failure(error)
+            is SuccessEmpty -> successEmpty()
+        }
+
     companion object {
         fun <T> success(data: T) = Success(data)
         fun successEmpty() = SuccessEmpty
