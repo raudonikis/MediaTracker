@@ -10,16 +10,16 @@ import coil.api.load
 import com.raudonikis.movietracker.R
 import kotlinx.android.synthetic.main.item_movie.view.*
 
-class MovieItemAdapter(private val interaction: Interaction? = null) :
+class MediaItemAdapter(private val interaction: Interaction? = null) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val diffCallback = object : DiffUtil.ItemCallback<MovieItem>() {
+    private val diffCallback = object : DiffUtil.ItemCallback<MediaItem>() {
 
-        override fun areItemsTheSame(oldItem: MovieItem, newItem: MovieItem): Boolean {
+        override fun areItemsTheSame(oldItem: MediaItem, newItem: MediaItem): Boolean {
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: MovieItem, newItem: MovieItem): Boolean {
+        override fun areContentsTheSame(oldItem: MediaItem, newItem: MediaItem): Boolean {
             return oldItem.title == newItem.title
         }
 
@@ -51,7 +51,7 @@ class MovieItemAdapter(private val interaction: Interaction? = null) :
         return differ.currentList.size
     }
 
-    fun submitList(list: List<MovieItem>) {
+    fun submitList(list: List<MediaItem>) {
         differ.submitList(list)
     }
 
@@ -61,7 +61,7 @@ class MovieItemAdapter(private val interaction: Interaction? = null) :
         private val interaction: Interaction?
     ) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(item: MovieItem) = with(itemView) {
+        fun bind(item: MediaItem) = with(itemView) {
             itemView.setOnClickListener {
                 interaction?.onItemSelected(adapterPosition, item)
             }
@@ -72,7 +72,7 @@ class MovieItemAdapter(private val interaction: Interaction? = null) :
     }
 
     interface Interaction {
-        fun onItemSelected(position: Int, item: MovieItem)
+        fun onItemSelected(position: Int, item: MediaItem)
     }
 
     companion object {

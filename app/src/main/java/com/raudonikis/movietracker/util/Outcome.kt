@@ -1,5 +1,6 @@
-package com.raudonikis.movietracker.model
+package com.raudonikis.movietracker.util
 
+import com.raudonikis.movietracker.model.Error
 import timber.log.Timber
 
 sealed class Outcome<out T> {
@@ -41,14 +42,20 @@ sealed class Outcome<out T> {
 
     inline fun <C> map(transform: (T) -> C): Outcome<C> =
         when (this) {
-            is Success -> success(transform(data))
-            is Failure -> failure(error)
+            is Success -> success(
+                transform(data)
+            )
+            is Failure -> failure(
+                error
+            )
             is SuccessEmpty -> successEmpty()
         }
 
     companion object {
-        fun <T> success(data: T) = Success(data)
-        fun successEmpty() = SuccessEmpty
+        fun <T> success(data: T) =
+            Success(data)
+        fun successEmpty() =
+            SuccessEmpty
         fun failure(error: Error, message: String = "") =
             Failure(
                 error,

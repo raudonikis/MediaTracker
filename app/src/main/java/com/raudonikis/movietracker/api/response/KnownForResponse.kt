@@ -1,21 +1,18 @@
-package com.raudonikis.movietracker.model.response
+package com.raudonikis.movietracker.api.response
 
 import com.google.gson.annotations.SerializedName
-import com.raudonikis.movietracker.model.MovieItem
 
-data class MultiResponse(
+data class KnownForResponse(
     @SerializedName("adult")
-    val isAdult: Boolean?,
+    val isAdult: Boolean,
     @SerializedName("backdrop_path")
-    val backdropPath: String?,
+    val backdropPath: String,
     @SerializedName("first_air_date")
     val firstAirDate: String,
     @SerializedName("genre_ids")
-    val genreIds: List<Int>?,
+    val genreIds: List<Int>,
     @SerializedName("id")
     val id: Int,
-    @SerializedName("known_for")
-    val knownFor: List<KnownForResponse>?,
     @SerializedName("media_type")
     val mediaType: String,
     @SerializedName("name")
@@ -33,19 +30,15 @@ data class MultiResponse(
     @SerializedName("popularity")
     val popularity: Double,
     @SerializedName("poster_path")
-    val posterPath: String?,
-    @SerializedName("profile_path")
-    val profilePath: String,
+    val posterPath: String,
     @SerializedName("release_date")
     val releaseDate: String,
     @SerializedName("title")
-    val title: String?,
+    val title: String,
     @SerializedName("video")
     val isVideo: Boolean,
     @SerializedName("vote_average")
     val voteAverage: Double,
     @SerializedName("vote_count")
     val voteCount: Int
-) {
-    fun toMovieItem(): MovieItem = MovieItem(title, posterPath)
-}
+)

@@ -1,8 +1,8 @@
 package com.raudonikis.movietracker.di
 
-import com.raudonikis.movietracker.api.MoveInterceptor
-import com.raudonikis.movietracker.api.MovieApiService
-import com.raudonikis.movietracker.constants.MovieApiConstants
+import com.raudonikis.movietracker.api.MediaApi
+import com.raudonikis.movietracker.api.MediaApiConstants
+import com.raudonikis.movietracker.api.MediaInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,17 +16,17 @@ import retrofit2.converter.gson.GsonConverterFactory
 object NetworkModule {
 
     @Provides
-    fun provideMovieApiService(okHttpClient: OkHttpClient): MovieApiService {
+    fun provideMovieApiService(okHttpClient: OkHttpClient): MediaApi {
         return Retrofit.Builder()
-            .baseUrl(MovieApiConstants.BASE_URL)
+            .baseUrl(MediaApiConstants.BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(MovieApiService::class.java)
+            .create(MediaApi::class.java)
     }
 
     @Provides
-    fun provideOkHttpClient(movieInterceptor: MoveInterceptor): OkHttpClient {
+    fun provideOkHttpClient(movieInterceptor: MediaInterceptor): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(movieInterceptor)
             .build()

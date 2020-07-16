@@ -65,5 +65,9 @@ dependencies {
     implementation Networking.retrofit
     implementation Networking.gson
     implementation Networking.gsonConverter
-    implementation("io.coil-kt:coil:0.11.0")
+    implementation Networking.coil
+    // Room database
+    implementation Room.runtime
+    implementation Room.extensions
+    kapt Room.compiler
 }

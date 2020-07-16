@@ -14,6 +14,8 @@ object Versions {
     const val material = "1.1.0"
     const val retrofit = "2.9.0"
     const val gson = "2.8.6"
+    const val coil = "0.11.0"
+    const val room = "2.2.5"
 }
 
 object Sdk {
@@ -34,7 +36,8 @@ object Kotlin {
 
 object Support {
     const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
-    const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
+    const val constraintLayout =
+        "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val liveEvent = "com.github.hadilq.liveevent:liveevent:${Versions.liveEvent}"
     const val material = "com.google.android.material:material:${Versions.material}"
 }
@@ -55,7 +58,8 @@ object Dagger {
     const val compiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
     const val hilt = "com.google.dagger:hilt-android:${Versions.daggerHilt}"
     const val hiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.daggerHilt}"
-    const val hiltLifecycle = "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.daggerHiltLifecycle}"
+    const val hiltLifecycle =
+        "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.daggerHiltLifecycle}"
     const val hiltLifecycleCompiler = "androidx.hilt:hilt-compiler:${Versions.daggerHiltLifecycle}"
 }
 
@@ -67,4 +71,11 @@ object Networking {
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val gsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
     const val gson = "com.google.code.gson:gson:${Versions.gson}"
+    const val coil = "io.coil-kt:coil:${Versions.coil}"
+}
+
+object Room {
+    const val runtime = "androidx.room:room-runtime:${Versions.room}"
+    const val compiler = "androidx.room:room-compiler:${Versions.room}"
+    const val extensions = "androidx.room:room-ktx:${Versions.room}"
 }

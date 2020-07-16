@@ -1,19 +1,23 @@
 package com.raudonikis.movietracker.api
 
-import com.raudonikis.movietracker.constants.MovieApiConstants
 import okhttp3.Interceptor
 import okhttp3.Response
 import javax.inject.Inject
 
-class MoveInterceptor @Inject constructor() : Interceptor {
+class MediaInterceptor @Inject constructor() : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
         chain.request().let { request ->
-            request.url().newBuilder().addQueryParameter("api_key", MovieApiConstants.API_KEY).build().let { url ->
+            request.url().newBuilder().addQueryParameter(QUERY_API_KEY, MediaApiConstants.API_KEY)
+                .build().let { url ->
                 request.newBuilder().url(url).build().run {
                     return chain.proceed(this)
                 }
             }
         }
+    }
+
+    companion object {
+        private const val QUERY_API_KEY = "api_key"
     }
 }
