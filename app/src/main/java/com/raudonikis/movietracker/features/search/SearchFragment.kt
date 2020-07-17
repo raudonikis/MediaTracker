@@ -3,18 +3,18 @@ package com.raudonikis.movietracker.features.search
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.GridLayoutManager
 import com.raudonikis.movietracker.R
 import com.raudonikis.movietracker.model.MediaItemAdapter
+import com.raudonikis.movietracker.util.hiltNavGraphViewModels
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_search.*
 
 @AndroidEntryPoint
 class SearchFragment : Fragment(R.layout.fragment_search) {
 
-    private val viewModel by viewModels<SearchViewModel>()
+    private val viewModel by hiltNavGraphViewModels<SearchViewModel>(R.id.nav_graph)
     private val mediaAdapter = MediaItemAdapter()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

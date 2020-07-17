@@ -67,7 +67,6 @@ class MediaItemAdapter(private val interaction: Interaction? = null) :
             }
             if (item.posterPath == null) return@with
             itemView.image_poster.load(BASE_URL + item.posterPath)
-//            itemView.text_title.text = item.title
         }
     }
 

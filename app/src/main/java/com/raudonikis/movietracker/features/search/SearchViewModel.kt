@@ -14,10 +14,11 @@ import timber.log.Timber
 class SearchViewModel @ViewModelInject constructor(
     private val mediaRepository: MediaRepository,
     @Assisted private val savedStateHandle: SavedStateHandle
-) :
-    ViewModel() {
+) : ViewModel() {
 
-    val mediaList = MutableLiveData<List<MediaItem>>()
+    // Data
+    val mediaList: MutableLiveData<List<MediaItem>> =
+        MutableLiveData()
 
     fun searchMedia(query: String) {
         viewModelScope.io {
@@ -25,5 +26,10 @@ class SearchViewModel @ViewModelInject constructor(
                 .onSuccess { mediaList.postValue(it) }
                 .onFailure { Timber.d("Failure -> $it") }
         }
+    }
+
+    companion object {
+        private const val KEY_SEARCH_RESULTS = "search_results"
+        private const val KEY_SEARCH_QUERY = "search_query"
     }
 }
