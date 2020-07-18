@@ -17,12 +17,12 @@ class SearchViewModel @ViewModelInject constructor(
 ) : ViewModel() {
 
     // Data
-    val mediaList: MutableLiveData<List<MediaItem>> =
-        MutableLiveData()
+    val mediaList: MutableLiveData<List<MediaItem>> = MutableLiveData()
+    var searchQuery = ""
 
-    fun searchMedia(query: String) {
+    fun searchMedia() {
         viewModelScope.io {
-            mediaRepository.searchMulti(query)
+            mediaRepository.searchMulti(searchQuery)
                 .onSuccess { mediaList.postValue(it) }
                 .onFailure { Timber.d("Failure -> $it") }
         }
