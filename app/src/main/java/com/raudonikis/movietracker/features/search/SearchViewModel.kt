@@ -8,13 +8,17 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.raudonikis.movietracker.extensions.io
 import com.raudonikis.movietracker.model.MediaItem
+import com.raudonikis.movietracker.model.MediaItemAdapter
+import com.raudonikis.movietracker.navigation.NavigationHandler
+import com.raudonikis.movietracker.navigation.Router
 import com.raudonikis.movietracker.repo.MediaRepository
 import timber.log.Timber
 
 class SearchViewModel @ViewModelInject constructor(
     private val mediaRepository: MediaRepository,
+    private val navigationHandler: NavigationHandler,
     @Assisted private val savedStateHandle: SavedStateHandle
-) : ViewModel() {
+) : ViewModel(), MediaItemAdapter.Interaction {
 
     // Data
     val mediaList: MutableLiveData<List<MediaItem>> = MutableLiveData()
@@ -28,8 +32,7 @@ class SearchViewModel @ViewModelInject constructor(
         }
     }
 
-    companion object {
-        private const val KEY_SEARCH_RESULTS = "search_results"
-        private const val KEY_SEARCH_QUERY = "search_query"
+    override fun onMediaItemSelected(position: Int, item: MediaItem) {
+        navigationHandler.navigate(Router.searchFragmentToMediaDetailsFragment(item))
     }
 }

@@ -1,6 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
-    <string name="app_name">MovieTracker</string>
-    <string name="content_description_poster">Poster</string>
-    <string name="hint_search">Search</string>
     <string name="action_search">Search</string>
+
+    <string name="app_name">MediaTracker</string>
+
+    <string name="content_description_poster">Poster</string>
+
+    <string name="hint_search">Search</string>
 </resources>

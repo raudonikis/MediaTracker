@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.fragment_search.*
 class SearchFragment : Fragment(R.layout.fragment_search) {
 
     private val viewModel by hiltNavGraphViewModels<SearchViewModel>(R.id.nav_graph)
-    private val mediaAdapter = MediaItemAdapter()
+    private lateinit var mediaAdapter: MediaItemAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -37,6 +37,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     }
 
     private fun setUpRecyclerView() {
+        mediaAdapter = MediaItemAdapter(viewModel)
         recycler_view.apply {
             adapter = mediaAdapter
             layoutManager = GridLayoutManager(context, SPAN_COUNT_MEDIA)

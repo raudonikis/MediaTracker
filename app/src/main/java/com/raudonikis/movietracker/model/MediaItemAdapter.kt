@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
 import com.raudonikis.movietracker.R
+import com.raudonikis.movietracker.api.MediaApiConstants
 import kotlinx.android.synthetic.main.item_movie.view.*
 
 class MediaItemAdapter(private val interaction: Interaction? = null) :
@@ -63,18 +64,14 @@ class MediaItemAdapter(private val interaction: Interaction? = null) :
 
         fun bind(item: MediaItem) = with(itemView) {
             itemView.setOnClickListener {
-                interaction?.onItemSelected(adapterPosition, item)
+                interaction?.onMediaItemSelected(adapterPosition, item)
             }
             if (item.posterPath == null) return@with
-            itemView.image_poster.load(BASE_URL + item.posterPath)
+            itemView.image_poster.load(MediaApiConstants.IMAGE_URL + item.posterPath)
         }
     }
 
     interface Interaction {
-        fun onItemSelected(position: Int, item: MediaItem)
-    }
-
-    companion object {
-        private const val BASE_URL = "https://image.tmdb.org/t/p/w300/"
+        fun onMediaItemSelected(position: Int, item: MediaItem)
     }
 }
