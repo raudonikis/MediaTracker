@@ -1,4 +1,4 @@
-package com.raudonikis.movietracker.api
+package com.raudonikis.movietracker.api.util
 
 object MediaApiConstants {
     const val API_KEY = "0fb342951813aa303f511d13be7eda20"

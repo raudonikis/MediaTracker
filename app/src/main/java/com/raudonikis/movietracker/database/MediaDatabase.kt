@@ -3,19 +3,17 @@ package com.raudonikis.movietracker.database
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.raudonikis.movietracker.database.daos.MovieDao
-import com.raudonikis.movietracker.database.daos.TvSeriesDao
-import com.raudonikis.movietracker.database.entities.MovieEntity
-import com.raudonikis.movietracker.database.entities.TvSeriesEntity
+import com.raudonikis.movietracker.database.daos.MediaDao
+import com.raudonikis.movietracker.database.entities.MediaEntity
+import com.raudonikis.movietracker.database.util.DatabaseConverters
 
-@Database(entities = [MovieEntity::class, TvSeriesEntity::class], version = 1)
+@Database(entities = [MediaEntity::class], version = 2)
 @TypeConverters(DatabaseConverters::class)
 abstract class MediaDatabase : RoomDatabase() {
 
-    abstract fun movieDao(): MovieDao
-    abstract fun tvSeriesDao(): TvSeriesDao
+    abstract fun mediaDao(): MediaDao
 
     companion object {
-        const val DATABASE_NAME = "media_db"
+        const val DATABASE_NAME = "media_db.db"
     }
 }

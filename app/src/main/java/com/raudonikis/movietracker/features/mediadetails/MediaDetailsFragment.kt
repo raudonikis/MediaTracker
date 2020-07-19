@@ -8,7 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import coil.api.load
 import com.raudonikis.movietracker.R
-import com.raudonikis.movietracker.api.MediaApiConstants
+import com.raudonikis.movietracker.api.util.MediaApiConstants
 import com.raudonikis.movietracker.model.MediaItem
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_media_details.*

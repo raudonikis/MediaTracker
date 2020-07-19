@@ -1,4 +1,4 @@
-package com.raudonikis.movietracker.api
+package com.raudonikis.movietracker.api.util
 
 import okhttp3.Interceptor
 import okhttp3.Response

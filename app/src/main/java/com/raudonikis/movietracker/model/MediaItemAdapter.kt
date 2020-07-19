@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
 import com.raudonikis.movietracker.R
-import com.raudonikis.movietracker.api.MediaApiConstants
+import com.raudonikis.movietracker.api.util.MediaApiConstants
 import kotlinx.android.synthetic.main.item_movie.view.*
 
 class MediaItemAdapter(private val interaction: Interaction? = null) :

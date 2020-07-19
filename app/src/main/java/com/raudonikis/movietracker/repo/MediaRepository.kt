@@ -2,22 +2,18 @@ package com.raudonikis.movietracker.repo
 
 import androidx.lifecycle.LiveData
 import com.raudonikis.movietracker.api.MediaApi
-import com.raudonikis.movietracker.api.MediaApiMapper
-import com.raudonikis.movietracker.database.MediaDatabaseMapper
-import com.raudonikis.movietracker.database.daos.MovieDao
-import com.raudonikis.movietracker.database.daos.TvSeriesDao
-import com.raudonikis.movietracker.database.entities.MovieEntity
-import com.raudonikis.movietracker.database.entities.TvSeriesEntity
+import com.raudonikis.movietracker.api.util.MediaApiMapper
+import com.raudonikis.movietracker.database.util.MediaDatabaseMapper
+import com.raudonikis.movietracker.database.daos.MediaDao
+import com.raudonikis.movietracker.database.entities.MediaEntity
 import com.raudonikis.movietracker.model.MediaItem
-import com.raudonikis.movietracker.model.MediaType
 import com.raudonikis.movietracker.util.Outcome
 import com.raudonikis.movietracker.util.apiCall
 import javax.inject.Inject
 
 class MediaRepository @Inject constructor(
     private val mediaApi: MediaApi,
-    private val movieDao: MovieDao,
-    private val tvSeriesDao: TvSeriesDao
+    private val mediaDao: MediaDao
 ) {
 
     suspend fun searchMulti(query: String): Outcome<List<MediaItem>> {
@@ -28,27 +24,12 @@ class MediaRepository @Inject constructor(
     }
 
     suspend fun addToWatched(media: MediaItem) {
-        when (media.mediaType) {
-            MediaType.MOVIE -> {
-                MediaDatabaseMapper.mapFromMediaItemToMovie(media).let {
-                    movieDao.insertMovie(it)
-                }
-            }
-            MediaType.TV -> {
-                MediaDatabaseMapper.mapFromMediaItemToTvSeries(media).let {
-                    tvSeriesDao.insertTvSeries(it)
-                }
-            }
-            else -> {
-            }
+        MediaDatabaseMapper.mapFromMediaItemToEntity(media).let {
+            mediaDao.insertMedia(it)
         }
     }
 
-    suspend fun getMovies(): List<MovieEntity> {
-        return movieDao.getMovies()
-    }
-
-    fun getTvSeries(): LiveData<List<TvSeriesEntity>> {
-        return tvSeriesDao.getTvSeries()
+    fun getMedia(): LiveData<List<MediaEntity>> {
+        return mediaDao.getMedia()
     }
 }

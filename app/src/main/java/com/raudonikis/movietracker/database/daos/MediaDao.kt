@@ -5,17 +5,17 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.raudonikis.movietracker.database.entities.TvSeriesEntity
+import com.raudonikis.movietracker.database.entities.MediaEntity
 
 @Dao
-interface TvSeriesDao {
+interface MediaDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertTvSeries(tvSeries: TvSeriesEntity)
+    suspend fun insertMedia(media: MediaEntity)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertTvSeries(tvSeries: List<TvSeriesEntity>)
+    suspend fun insertMedia(media: List<MediaEntity>)
 
-    @Query("Select * from tv_series")
-    fun getTvSeries(): LiveData<List<TvSeriesEntity>>
+    @Query("Select * from media")
+    fun getMedia(): LiveData<List<MediaEntity>>
 }

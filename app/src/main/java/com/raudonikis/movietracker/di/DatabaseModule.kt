@@ -3,8 +3,7 @@ package com.raudonikis.movietracker.di
 import android.content.Context
 import androidx.room.Room
 import com.raudonikis.movietracker.database.MediaDatabase
-import com.raudonikis.movietracker.database.daos.MovieDao
-import com.raudonikis.movietracker.database.daos.TvSeriesDao
+import com.raudonikis.movietracker.database.daos.MediaDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -29,9 +28,5 @@ object DatabaseModule {
 
     @Provides
     @Singleton
-    fun provideMovieDao(mediaDatabase: MediaDatabase): MovieDao = mediaDatabase.movieDao()
-
-    @Provides
-    @Singleton
-    fun provideTvSeriesDao(mediaDatabase: MediaDatabase): TvSeriesDao = mediaDatabase.tvSeriesDao()
+    fun provideMediaDao(mediaDatabase: MediaDatabase): MediaDao = mediaDatabase.mediaDao()
 }

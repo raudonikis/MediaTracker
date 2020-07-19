@@ -1,4 +1,4 @@
-package com.raudonikis.movietracker.api
+package com.raudonikis.movietracker.api.util
 
 import com.raudonikis.movietracker.api.response.MultiSearchResponse
 import com.raudonikis.movietracker.model.MediaItem

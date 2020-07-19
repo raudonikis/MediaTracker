@@ -2,8 +2,8 @@ package com.raudonikis.movietracker.di
 
 import com.google.gson.Gson
 import com.raudonikis.movietracker.api.MediaApi
-import com.raudonikis.movietracker.api.MediaApiConstants
-import com.raudonikis.movietracker.api.MediaInterceptor
+import com.raudonikis.movietracker.api.util.MediaApiConstants
+import com.raudonikis.movietracker.api.util.MediaInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
