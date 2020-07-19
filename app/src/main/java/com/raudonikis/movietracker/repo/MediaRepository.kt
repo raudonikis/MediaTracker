@@ -1,14 +1,14 @@
 package com.raudonikis.movietracker.repo
 
-import androidx.lifecycle.LiveData
 import com.raudonikis.movietracker.api.MediaApi
 import com.raudonikis.movietracker.api.util.MediaApiMapper
-import com.raudonikis.movietracker.database.util.MediaDatabaseMapper
 import com.raudonikis.movietracker.database.daos.MediaDao
 import com.raudonikis.movietracker.database.entities.MediaEntity
+import com.raudonikis.movietracker.database.util.MediaDatabaseMapper
 import com.raudonikis.movietracker.model.MediaItem
 import com.raudonikis.movietracker.util.Outcome
 import com.raudonikis.movietracker.util.apiCall
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class MediaRepository @Inject constructor(
@@ -29,7 +29,5 @@ class MediaRepository @Inject constructor(
         }
     }
 
-    fun getMedia(): LiveData<List<MediaEntity>> {
-        return mediaDao.getMedia()
-    }
+    fun getMedia(): Flow<List<MediaEntity>> = mediaDao.getMedia()
 }

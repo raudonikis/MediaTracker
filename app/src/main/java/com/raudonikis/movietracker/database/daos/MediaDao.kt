@@ -1,11 +1,11 @@
 package com.raudonikis.movietracker.database.daos
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.raudonikis.movietracker.database.entities.MediaEntity
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface MediaDao {
@@ -17,5 +17,6 @@ interface MediaDao {
     suspend fun insertMedia(media: List<MediaEntity>)
 
     @Query("Select * from media")
-    fun getMedia(): LiveData<List<MediaEntity>>
+    fun getMedia(): Flow<List<MediaEntity>>
+
 }
