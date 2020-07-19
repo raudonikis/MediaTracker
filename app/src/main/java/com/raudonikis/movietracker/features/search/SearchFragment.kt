@@ -1,7 +1,9 @@
 package com.raudonikis.movietracker.features.search
 
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
@@ -50,6 +52,14 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         }
         edit_search.doOnTextChanged { text, _, _, _ ->
             viewModel.searchQuery = text.toString()
+        }
+        edit_search.setOnEditorActionListener { v, actionId, event ->
+            when (actionId) {
+                EditorInfo.IME_ACTION_GO -> {
+                    viewModel.searchMedia()
+                }
+            }
+            true
         }
     }
 
