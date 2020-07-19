@@ -23,6 +23,15 @@
         app:layout_constraintTop_toBottomOf="@id/image_poster"
         tools:text="Title" />
 
+    <Button
+        android:id="@+id/button_add_watched"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/action_watched"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_title" />
+
     <Space
         android:id="@+id/space_bottom_navigation"
         android:layout_width="match_parent"

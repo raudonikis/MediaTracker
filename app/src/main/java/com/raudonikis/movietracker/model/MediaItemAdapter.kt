@@ -17,11 +17,11 @@ class MediaItemAdapter(private val interaction: Interaction? = null) :
     private val diffCallback = object : DiffUtil.ItemCallback<MediaItem>() {
 
         override fun areItemsTheSame(oldItem: MediaItem, newItem: MediaItem): Boolean {
-            return oldItem == newItem
+            return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(oldItem: MediaItem, newItem: MediaItem): Boolean {
-            return oldItem.title == newItem.title
+            return oldItem == newItem
         }
 
     }

@@ -8,7 +8,7 @@ data class MultiResultResponse(
     @SerializedName("backdrop_path")
     val backdropPath: String?,
     @SerializedName("first_air_date")
-    val firstAirDate: String,
+    val firstAirDate: String?,
     @SerializedName("genre_ids")
     val genreIds: List<Int>?,
     @SerializedName("id")
@@ -22,27 +22,27 @@ data class MultiResultResponse(
     @SerializedName("origin_country")
     val originCountry: List<String>,
     @SerializedName("original_language")
-    val originalLanguage: String,
+    val originalLanguage: String?,
     @SerializedName("original_name")
-    val originalName: String,
+    val originalName: String?,
     @SerializedName("original_title")
-    val originalTitle: String,
+    val originalTitle: String?,
     @SerializedName("overview")
-    val overview: String,
+    val overview: String?,
     @SerializedName("popularity")
-    val popularity: Double,
+    val popularity: Double?,
     @SerializedName("poster_path")
     val posterPath: String?,
     @SerializedName("profile_path")
-    val profilePath: String,
+    val profilePath: String?,
     @SerializedName("release_date")
-    val releaseDate: String,
+    val releaseDate: String?,
     @SerializedName("title")
     val title: String?,
     @SerializedName("video")
-    val isVideo: Boolean,
+    val isVideo: Boolean?,
     @SerializedName("vote_average")
-    val voteAverage: Double,
+    val voteAverage: Double?,
     @SerializedName("vote_count")
-    val voteCount: Int
+    val voteCount: Int?
 )

@@ -7,4 +7,7 @@
     <string name="content_description_poster">Poster</string>
 
     <string name="hint_search">Search</string>
+    <string name="action_watched">Add to watched</string>
+    <string name="title_movies">Movies</string>
+    <string name="title_tv">Tv</string>
 </resources>

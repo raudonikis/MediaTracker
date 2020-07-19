@@ -16,6 +16,7 @@ object Versions {
     const val gson = "2.8.6"
     const val coil = "0.11.0"
     const val room = "2.2.5"
+    const val liveData = "2.2.0"
 }
 
 object Sdk {
@@ -78,4 +79,8 @@ object Room {
     const val runtime = "androidx.room:room-runtime:${Versions.room}"
     const val compiler = "androidx.room:room-compiler:${Versions.room}"
     const val extensions = "androidx.room:room-ktx:${Versions.room}"
+}
+
+object Lifecycle {
+    const val liveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.liveData}"
 }

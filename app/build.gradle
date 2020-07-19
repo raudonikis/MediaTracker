@@ -70,4 +70,6 @@ dependencies {
     implementation Room.runtime
     implementation Room.extensions
     kapt Room.compiler
+    // Lifecycle
+    implementation Lifecycle.liveData
 }

@@ -9,29 +9,29 @@ data class MovieEntity(
     @PrimaryKey(autoGenerate = false)
     val id: Int,
     @ColumnInfo(name = "adult")
-    val isAdult: Boolean,
+    val isAdult: Boolean?,
     @ColumnInfo(name = "backdrop_path")
     val backdropPath: String?,
     @ColumnInfo(name = "genre_ids")
-    val genreIds: List<Int>,
+    val genreIds: List<Int>?,
     @ColumnInfo(name = "original_language")
-    val originalLanguage: String,
+    val originalLanguage: String?,
     @ColumnInfo(name = "original_title")
-    val originalTitle: String,
+    val originalTitle: String?,
     @ColumnInfo(name = "overview")
-    val overview: String,
+    val overview: String?,
     @ColumnInfo(name = "popularity")
-    val popularity: Double,
+    val popularity: Double?,
     @ColumnInfo(name = "poster_path")
     val posterPath: String?,
     @ColumnInfo(name = "release_date")
-    val releaseDate: String,
+    val releaseDate: String?,
     @ColumnInfo(name = "title")
-    val title: String,
+    val title: String?,
     @ColumnInfo(name = "video")
-    val isVideo: Boolean,
+    val isVideo: Boolean?,
     @ColumnInfo(name = "vote_average")
-    val voteAverage: Double,
+    val voteAverage: Double?,
     @ColumnInfo(name = "vote_count")
-    val voteCount: Int
+    val voteCount: Int?
 )
