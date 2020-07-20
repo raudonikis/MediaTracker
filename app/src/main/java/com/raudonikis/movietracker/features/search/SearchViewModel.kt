@@ -2,16 +2,15 @@ package com.raudonikis.movietracker.features.search
 
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
+import com.raudonikis.movietracker.database.util.MediaDatabaseMapper
 import com.raudonikis.movietracker.extensions.io
 import com.raudonikis.movietracker.model.MediaItem
 import com.raudonikis.movietracker.model.MediaItemAdapter
 import com.raudonikis.movietracker.navigation.NavigationHandler
 import com.raudonikis.movietracker.navigation.Router
 import com.raudonikis.movietracker.repo.MediaRepository
+import kotlinx.coroutines.flow.map
 import timber.log.Timber
 
 class SearchViewModel @ViewModelInject constructor(
@@ -21,18 +20,36 @@ class SearchViewModel @ViewModelInject constructor(
 ) : ViewModel(), MediaItemAdapter.Interaction {
 
     // Data
-    val mediaList: MutableLiveData<List<MediaItem>> = MutableLiveData()
+    // The media list returned by the search query
+    val mediaItemList: MutableLiveData<List<MediaItem>> = MutableLiveData()
+    // The currently selected media item from the search results
+    val selectedMediaItemSearch: MutableLiveData<MediaItem> = MutableLiveData()
+    // The currently selected media item, from the local database (null if it doesn't exist)
+    val selectedMediaItemLocal: LiveData<MediaItem?> = selectedMediaItemSearch.switchMap { mediaItemSearch ->
+        mediaRepository.getMedia(mediaItemSearch.id)
+            .map { it?.let { MediaDatabaseMapper.mapFromMediaEntityToItem(it) } }
+            .asLiveData(viewModelScope.coroutineContext)
+    }
     var searchQuery = ""
 
     fun searchMedia() {
         viewModelScope.io {
             mediaRepository.searchMulti(searchQuery)
-                .onSuccess { mediaList.postValue(it) }
+                .onSuccess { mediaItemList.postValue(it) }
                 .onFailure { Timber.d("Failure -> $it") }
         }
     }
 
+    fun addMediaItemToWatchedList() {
+        viewModelScope.io {
+            selectedMediaItemSearch.value?.let {
+                mediaRepository.addToWatched(it)
+            }
+        }
+    }
+
     override fun onMediaItemSelected(position: Int, item: MediaItem) {
-        navigationHandler.navigate(Router.searchFragmentToMediaDetailsFragment(item))
+        selectedMediaItemSearch.postValue(item)
+        navigationHandler.navigate(Router.searchFragmentToMediaDetailsFragment)
     }
 }

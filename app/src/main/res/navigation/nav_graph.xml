@@ -28,9 +28,5 @@
         android:id="@+id/mediaDetailsFragment"
         android:name="com.raudonikis.movietracker.features.mediadetails.MediaDetailsFragment"
         android:label="MediaDetailsFragment"
-        tools:layout="@layout/fragment_media_details">
-        <argument
-            android:name="mediaItem"
-            app:argType="com.raudonikis.movietracker.model.MediaItem" />
-    </fragment>
+        tools:layout="@layout/fragment_media_details" />
 </navigation>

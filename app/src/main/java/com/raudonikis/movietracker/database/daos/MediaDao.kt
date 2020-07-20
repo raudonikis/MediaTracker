@@ -17,6 +17,8 @@ interface MediaDao {
     suspend fun insertMedia(media: List<MediaEntity>)
 
     @Query("Select * from media")
-    fun getMedia(): Flow<List<MediaEntity>>
+    fun getAllMedia(): Flow<List<MediaEntity>>
 
+    @Query("SELECT * FROM media WHERE id = :id")
+    fun getMedia(id: Int): Flow<MediaEntity?>
 }

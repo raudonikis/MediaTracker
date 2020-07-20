@@ -1,7 +1,6 @@
 package com.raudonikis.movietracker.features.search
 
 import android.os.Bundle
-import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import androidx.core.widget.doOnTextChanged
@@ -33,7 +32,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     }
 
     private fun setUpObservers() {
-        viewModel.mediaList.observe(viewLifecycleOwner) {
+        viewModel.mediaItemList.observe(viewLifecycleOwner) {
             mediaAdapter.submitList(it)
         }
     }
@@ -53,7 +52,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         edit_search.doOnTextChanged { text, _, _, _ ->
             viewModel.searchQuery = text.toString()
         }
-        edit_search.setOnEditorActionListener { v, actionId, event ->
+        edit_search.setOnEditorActionListener { _, actionId, _ ->
             when (actionId) {
                 EditorInfo.IME_ACTION_GO -> {
                     viewModel.searchMedia()

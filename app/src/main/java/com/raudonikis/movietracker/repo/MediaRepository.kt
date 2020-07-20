@@ -29,5 +29,7 @@ class MediaRepository @Inject constructor(
         }
     }
 
-    fun getMedia(): Flow<List<MediaEntity>> = mediaDao.getMedia()
+    fun getAllMedia(): Flow<List<MediaEntity>> = mediaDao.getAllMedia()
+
+    fun getMedia(id: Int): Flow<MediaEntity?> = mediaDao.getMedia(id)
 }
