@@ -10,8 +10,8 @@ import com.raudonikis.movietracker.model.MediaItemAdapter
 import com.raudonikis.movietracker.navigation.NavigationHandler
 import com.raudonikis.movietracker.navigation.Router
 import com.raudonikis.movietracker.repo.MediaRepository
+import com.raudonikis.movietracker.util.Outcome
 import kotlinx.coroutines.flow.map
-import timber.log.Timber
 
 class SearchViewModel @ViewModelInject constructor(
     private val mediaRepository: MediaRepository,
@@ -21,22 +21,26 @@ class SearchViewModel @ViewModelInject constructor(
 
     // Data
     // The media list returned by the search query
-    val mediaItemList: MutableLiveData<List<MediaItem>> = MutableLiveData()
+    val mediaItemList: MutableLiveData<Outcome<List<MediaItem>>> = MutableLiveData()
+
     // The currently selected media item from the search results
     val selectedMediaItemSearch: MutableLiveData<MediaItem> = MutableLiveData()
+
     // The currently selected media item, from the local database (null if it doesn't exist)
-    val selectedMediaItemLocal: LiveData<MediaItem?> = selectedMediaItemSearch.switchMap { mediaItemSearch ->
-        mediaRepository.getMedia(mediaItemSearch.id)
-            .map { it?.let { MediaDatabaseMapper.mapFromMediaEntityToItem(it) } }
-            .asLiveData(viewModelScope.coroutineContext)
-    }
+    val selectedMediaItemLocal: LiveData<MediaItem?> =
+        selectedMediaItemSearch.switchMap { mediaItemSearch ->
+            mediaRepository.getMedia(mediaItemSearch.id)
+                .map { it?.let { MediaDatabaseMapper.mapFromMediaEntityToItem(it) } }
+                .asLiveData(viewModelScope.coroutineContext)
+        }
     var searchQuery = ""
 
     fun searchMedia() {
+        mediaItemList.postValue(Outcome.loading())
         viewModelScope.io {
-            mediaRepository.searchMulti(searchQuery)
-                .onSuccess { mediaItemList.postValue(it) }
-                .onFailure { Timber.d("Failure -> $it") }
+            mediaRepository.searchMulti(searchQuery).let {
+                mediaItemList.postValue(it)
+            }
         }
     }
 

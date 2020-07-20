@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.GridLayoutManager
 import com.raudonikis.movietracker.R
+import com.raudonikis.movietracker.extensions.hide
+import com.raudonikis.movietracker.extensions.show
 import com.raudonikis.movietracker.model.MediaItemAdapter
 import com.raudonikis.movietracker.util.hiltNavGraphViewModels
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,8 +34,13 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     }
 
     private fun setUpObservers() {
-        viewModel.mediaItemList.observe(viewLifecycleOwner) {
-            mediaAdapter.submitList(it)
+        viewModel.mediaItemList.observe(viewLifecycleOwner) { outcome ->
+            outcome
+                .onLoading { progress_search.show() }
+                .onSuccess {
+                    progress_search.hide()
+                    mediaAdapter.submitList(it)
+                }
         }
     }
 

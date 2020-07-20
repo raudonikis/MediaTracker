@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.map
 class WatchedViewModel @ViewModelInject constructor(private val mediaRepository: MediaRepository) :
     ViewModel(), MediaItemAdapter.Interaction {
 
-    val media = mediaRepository.getMedia()
+    val media = mediaRepository.getAllMedia()
         .map { mediaList -> mediaList.map { MediaDatabaseMapper.mapFromMediaEntityToItem(it) } }
         .asLiveData(viewModelScope.coroutineContext)
 
