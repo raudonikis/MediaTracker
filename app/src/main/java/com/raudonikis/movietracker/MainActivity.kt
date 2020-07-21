@@ -32,6 +32,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             findNavController(R.id.nav_host_fragment).let { navController ->
                 when (command) {
                     is NavigationCommand.To -> navController.navigate(command.directions)
+                    is NavigationCommand.Back -> navController.popBackStack()
+                    else -> {}
                 }
             }
         }

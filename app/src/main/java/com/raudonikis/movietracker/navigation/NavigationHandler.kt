@@ -12,4 +12,8 @@ class NavigationHandler @Inject constructor() {
     fun navigate(destination: NavDirections) {
         navigationCommands.postValue(NavigationCommand.To(destination))
     }
+
+    fun navigateBack() {
+        navigationCommands.postValue(NavigationCommand.Back)
+    }
 }

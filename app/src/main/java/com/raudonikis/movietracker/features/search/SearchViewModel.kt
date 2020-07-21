@@ -36,6 +36,7 @@ class SearchViewModel @ViewModelInject constructor(
     var searchQuery = ""
 
     fun searchMedia() {
+        if (searchQuery.isBlank()) return
         mediaItemList.postValue(Outcome.loading())
         viewModelScope.io {
             mediaRepository.searchMulti(searchQuery).let {
@@ -47,13 +48,13 @@ class SearchViewModel @ViewModelInject constructor(
     fun addMediaItemToWatchedList() {
         viewModelScope.io {
             selectedMediaItemSearch.value?.let {
-                mediaRepository.addToWatched(it)
+                mediaRepository.addToWatchedList(it)
             }
         }
     }
 
     override fun onMediaItemSelected(position: Int, item: MediaItem) {
         selectedMediaItemSearch.postValue(item)
-        navigationHandler.navigate(Router.searchFragmentToMediaDetailsFragment)
+        navigationHandler.navigate(Router.searchFragmentToDetailsRemoteFragment)
     }
 }

@@ -1,4 +1,4 @@
-package com.raudonikis.movietracker.features.mediadetails
+package com.raudonikis.movietracker.features.details.remote
 
 import android.os.Bundle
 import android.view.View
@@ -13,10 +13,10 @@ import com.raudonikis.movietracker.features.search.SearchViewModel
 import com.raudonikis.movietracker.model.MediaItem
 import com.raudonikis.movietracker.util.hiltNavGraphViewModels
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_media_details.*
+import kotlinx.android.synthetic.main.fragment_details_remote.*
 
 @AndroidEntryPoint
-class MediaDetailsFragment : Fragment(R.layout.fragment_media_details) {
+class DetailsRemoteFragment : Fragment(R.layout.fragment_details_remote) {
 
     private val viewModel: SearchViewModel by hiltNavGraphViewModels(R.id.nav_graph)
 
@@ -45,6 +45,6 @@ class MediaDetailsFragment : Fragment(R.layout.fragment_media_details) {
         Glide.with(image_poster)
             .load(MediaApiConstants.IMAGE_URL + mediaItem.posterPath)
             .into(image_poster)
-        text_title.text = mediaItem.originalTitle ?: mediaItem.title
+        text_title.text = mediaItem.title
     }
 }

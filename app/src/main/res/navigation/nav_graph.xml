@@ -9,7 +9,11 @@
         android:id="@+id/watchedFragment"
         android:name="com.raudonikis.movietracker.features.watched.WatchedFragment"
         android:label="WatchedFragment"
-        tools:layout="@layout/fragment_watched" />
+        tools:layout="@layout/fragment_watched">
+        <action
+            android:id="@+id/action_watchedFragment_to_detailsLocalFragment"
+            app:destination="@id/detailsLocalFragment" />
+    </fragment>
     <fragment
         android:id="@+id/discoverFragment"
         android:name="com.raudonikis.movietracker.features.discover.DiscoverFragment"
@@ -21,12 +25,17 @@
         android:label="SearchFragment"
         tools:layout="@layout/fragment_search">
         <action
-            android:id="@+id/action_searchFragment_to_mediaDetailsFragment"
-            app:destination="@id/mediaDetailsFragment" />
+            android:id="@+id/action_searchFragment_to_detailsRemoteFragment"
+            app:destination="@id/detailsRemoteFragment" />
     </fragment>
     <fragment
-        android:id="@+id/mediaDetailsFragment"
-        android:name="com.raudonikis.movietracker.features.mediadetails.MediaDetailsFragment"
-        android:label="MediaDetailsFragment"
-        tools:layout="@layout/fragment_media_details" />
+        android:id="@+id/detailsRemoteFragment"
+        android:name="com.raudonikis.movietracker.features.details.remote.DetailsRemoteFragment"
+        android:label="DetailsRemoteFragment"
+        tools:layout="@layout/fragment_details_remote" />
+    <fragment
+        android:id="@+id/detailsLocalFragment"
+        android:name="com.raudonikis.movietracker.features.details.local.DetailsLocalFragment"
+        android:label="DetailsLocalFragment"
+        tools:layout="@layout/fragment_details_local" />
 </navigation>

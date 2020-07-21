@@ -23,9 +23,15 @@ class MediaRepository @Inject constructor(
             }
     }
 
-    suspend fun addToWatched(media: MediaItem) {
+    suspend fun addToWatchedList(media: MediaItem) {
         MediaDatabaseMapper.mapFromMediaItemToEntity(media).let {
             mediaDao.insertMedia(it)
+        }
+    }
+
+    suspend fun removeFromWatchedList(media: MediaItem) {
+        MediaDatabaseMapper.mapFromMediaItemToEntity(media).let {
+            mediaDao.remove(it)
         }
     }
 

@@ -1,9 +1,6 @@
 package com.raudonikis.movietracker.database.daos
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.raudonikis.movietracker.database.entities.MediaEntity
 import kotlinx.coroutines.flow.Flow
 
@@ -21,4 +18,7 @@ interface MediaDao {
 
     @Query("SELECT * FROM media WHERE id = :id")
     fun getMedia(id: Int): Flow<MediaEntity?>
+
+    @Delete
+    suspend fun remove(media: MediaEntity)
 }
