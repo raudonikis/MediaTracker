@@ -1,33 +1,20 @@
 package com.raudonikis.movietracker.model
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import coil.ImageLoader
-import coil.api.load
+import com.bumptech.glide.Glide
 import com.raudonikis.movietracker.R
 import com.raudonikis.movietracker.api.util.MediaApiConstants
-import dagger.hilt.EntryPoint
-import dagger.hilt.InstallIn
-import dagger.hilt.android.EntryPointAccessors
-import dagger.hilt.android.components.ApplicationComponent
 import kotlinx.android.synthetic.main.item_movie.view.*
 
 class MediaItemAdapter(
-    private val applicationContext: Context,
     private val interaction: Interaction? = null
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
-    @EntryPoint
-    @InstallIn(ApplicationComponent::class)
-    interface MediaItemAdapterInterface {
-        fun getImageLoader(): ImageLoader
-    }
 
     private val diffCallback = object : DiffUtil.ItemCallback<MediaItem>() {
 
@@ -45,17 +32,13 @@ class MediaItemAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
-        val mediaItemAdapterInterface =
-            EntryPointAccessors.fromApplication(applicationContext, MediaItemAdapterInterface::class.java)
-
         return MovieItemViewHolder(
             LayoutInflater.from(parent.context).inflate(
                 R.layout.item_movie,
                 parent,
                 false
             ),
-            interaction,
-            mediaItemAdapterInterface.getImageLoader()
+            interaction
         )
     }
 
@@ -78,19 +61,18 @@ class MediaItemAdapter(
     class MovieItemViewHolder
     constructor(
         itemView: View,
-        private val interaction: Interaction?,
-        private val imageLoader: ImageLoader
+        private val interaction: Interaction?
     ) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(item: MediaItem) = with(itemView) {
             itemView.setOnClickListener {
                 interaction?.onMediaItemSelected(adapterPosition, item)
             }
+            itemView.image_poster.setImageResource(R.drawable.ic_popcorn)
             if (!item.posterPath.isNullOrBlank()) {
-                itemView.image_poster.load(
-                    imageLoader = imageLoader,
-                    uri = MediaApiConstants.IMAGE_URL + item.posterPath
-                )
+                Glide.with(itemView.image_poster)
+                    .load(MediaApiConstants.IMAGE_URL + item.posterPath)
+                    .into(itemView.image_poster)
             }
         }
     }

@@ -29,7 +29,7 @@ class WatchedFragment : Fragment(R.layout.fragment_watched) {
     }
 
     private fun setUpRecyclerView() {
-        mediaAdapter = MediaItemAdapter(requireContext(), viewModel)
+        mediaAdapter = MediaItemAdapter(viewModel)
         recycler_tv.apply {
             adapter = mediaAdapter
             layoutManager = object : GridLayoutManager(context, SPAN_COUNT_MEDIA) {

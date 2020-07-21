@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
-import coil.api.load
+import com.bumptech.glide.Glide
 import com.raudonikis.movietracker.R
 import com.raudonikis.movietracker.api.util.MediaApiConstants
 import com.raudonikis.movietracker.extensions.enableIf
@@ -42,7 +42,9 @@ class MediaDetailsFragment : Fragment(R.layout.fragment_media_details) {
     }
 
     private fun setUpViews(mediaItem: MediaItem) {
-        image_poster.load(MediaApiConstants.IMAGE_URL + mediaItem.posterPath)
+        Glide.with(image_poster)
+            .load(MediaApiConstants.IMAGE_URL + mediaItem.posterPath)
+            .into(image_poster)
         text_title.text = mediaItem.originalTitle ?: mediaItem.title
     }
 }

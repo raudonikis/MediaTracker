@@ -65,8 +65,9 @@ dependencies {
     implementation Networking.retrofit
     implementation Networking.gson
     implementation Networking.gsonConverter
-    implementation Networking.coil
-    implementation Networking.coilBase
+    // Images
+    implementation Images.glide
+    annotationProcessor Images.glideAnnotation
     // Room database
     implementation Room.runtime
     implementation Room.extensions

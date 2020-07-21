@@ -1,7 +1,5 @@
 package com.raudonikis.movietracker.di
 
-import android.content.Context
-import coil.ImageLoader
 import com.google.gson.Gson
 import com.raudonikis.movietracker.api.MediaApi
 import com.raudonikis.movietracker.api.util.MediaApiConstants
@@ -10,7 +8,6 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
-import dagger.hilt.android.qualifiers.ApplicationContext
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -41,13 +38,5 @@ object NetworkModule {
     @Provides
     fun provideGson(): Gson {
         return Gson()
-    }
-
-    @Provides
-    @Singleton
-    fun provideImageLoader(@ApplicationContext context: Context): ImageLoader {
-        return ImageLoader.Builder(context)
-            .crossfade(true)
-            .build()
     }
 }
