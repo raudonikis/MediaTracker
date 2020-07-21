@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.raudonikis.movietracker.R
 import com.raudonikis.movietracker.extensions.hide
+import com.raudonikis.movietracker.extensions.hideKeyboard
 import com.raudonikis.movietracker.extensions.show
 import com.raudonikis.movietracker.model.MediaItemAdapter
 import com.raudonikis.movietracker.util.hiltNavGraphViewModels
@@ -61,6 +62,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
     private fun setUpListeners() {
         button_search.setOnClickListener {
+            hideKeyboard()
             viewModel.searchMedia()
         }
         edit_search.doOnTextChanged { text, _, _, _ ->
@@ -69,6 +71,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         edit_search.setOnEditorActionListener { _, actionId, _ ->
             when (actionId) {
                 EditorInfo.IME_ACTION_GO -> {
+                    hideKeyboard()
                     viewModel.searchMedia()
                 }
             }
