@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.raudonikis.movietracker.R
 import com.raudonikis.movietracker.model.MediaItemAdapter
 import com.raudonikis.movietracker.util.hiltNavGraphViewModels
@@ -31,7 +32,12 @@ class WatchedFragment : Fragment(R.layout.fragment_watched) {
         mediaAdapter = MediaItemAdapter(viewModel)
         recycler_tv.apply {
             adapter = mediaAdapter
-            layoutManager = GridLayoutManager(context, SPAN_COUNT_MEDIA)
+            layoutManager = object : GridLayoutManager(context, SPAN_COUNT_MEDIA) {
+                override fun checkLayoutParams(lp: RecyclerView.LayoutParams?): Boolean {
+                    lp?.height = height / SPAN_COUNT_MEDIA
+                    return true
+                }
+            }
         }
     }
 

@@ -67,7 +67,9 @@ class MediaItemAdapter(private val interaction: Interaction? = null) :
                 interaction?.onMediaItemSelected(adapterPosition, item)
             }
             if (item.posterPath == null) return@with
-            itemView.image_poster.load(MediaApiConstants.IMAGE_URL + item.posterPath)
+            itemView.image_poster.load(MediaApiConstants.IMAGE_URL + item.posterPath) {
+                crossfade(true)
+            }
         }
     }
 

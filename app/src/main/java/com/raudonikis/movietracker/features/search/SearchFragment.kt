@@ -7,6 +7,7 @@ import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.raudonikis.movietracker.R
 import com.raudonikis.movietracker.extensions.hide
 import com.raudonikis.movietracker.extensions.show
@@ -48,7 +49,13 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         mediaAdapter = MediaItemAdapter(viewModel)
         recycler_view.apply {
             adapter = mediaAdapter
-            layoutManager = GridLayoutManager(context, SPAN_COUNT_MEDIA)
+            layoutManager = object : GridLayoutManager(context, SPAN_COUNT_MEDIA) {
+                override fun checkLayoutParams(lp: RecyclerView.LayoutParams?): Boolean {
+                    lp?.height = height / SPAN_COUNT_MEDIA
+                    return true
+                }
+            }
+            hasFixedSize()
         }
     }
 
@@ -70,6 +77,6 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     }
 
     companion object {
-        private const val SPAN_COUNT_MEDIA = 3
+        private const val SPAN_COUNT_MEDIA = 2
     }
 }
