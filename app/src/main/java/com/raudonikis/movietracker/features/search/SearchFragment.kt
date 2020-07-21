@@ -46,7 +46,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     }
 
     private fun setUpRecyclerView() {
-        mediaAdapter = MediaItemAdapter(viewModel)
+        mediaAdapter = MediaItemAdapter(requireContext(), viewModel)
         recycler_view.apply {
             adapter = mediaAdapter
             layoutManager = object : GridLayoutManager(context, SPAN_COUNT_MEDIA) {

@@ -66,6 +66,7 @@ dependencies {
     implementation Networking.gson
     implementation Networking.gsonConverter
     implementation Networking.coil
+    implementation Networking.coilBase
     // Room database
     implementation Room.runtime
     implementation Room.extensions

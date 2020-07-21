@@ -73,6 +73,7 @@ object Networking {
     const val gsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
     const val gson = "com.google.code.gson:gson:${Versions.gson}"
     const val coil = "io.coil-kt:coil:${Versions.coil}"
+    const val coilBase = "io.coil-kt:coil-base:${Versions.coil}"
 }
 
 object Room {
