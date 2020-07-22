@@ -68,7 +68,7 @@ class MediaItemAdapter(
             itemView.setOnClickListener {
                 interaction?.onMediaItemSelected(adapterPosition, item)
             }
-            itemView.image_poster.setImageResource(R.drawable.ic_popcorn)
+            itemView.image_poster.setImageResource(R.drawable.placeholder_poster)
             if (!item.posterPath.isNullOrBlank()) {
                 Glide.with(itemView.image_poster)
                     .load(MediaApiConstants.IMAGE_URL + item.posterPath)
