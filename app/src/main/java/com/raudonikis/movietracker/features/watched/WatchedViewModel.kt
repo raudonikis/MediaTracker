@@ -1,10 +1,7 @@
 package com.raudonikis.movietracker.features.watched
 
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.raudonikis.movietracker.database.util.MediaDatabaseMapper
 import com.raudonikis.movietracker.extensions.io
 import com.raudonikis.movietracker.model.MediaItem
@@ -19,9 +16,22 @@ class WatchedViewModel @ViewModelInject constructor(
     private val navigationHandler: NavigationHandler
 ) : ViewModel(), MediaItemAdapter.Interaction {
 
-    val media = mediaRepository.getAllMedia()
+    private val media = mediaRepository.getAllMedia()
         .map { mediaList -> mediaList.map { MediaDatabaseMapper.mapFromMediaEntityToItem(it) } }
-        .asLiveData(viewModelScope.coroutineContext)
+
+    private val searchQuery = MutableLiveData<String>()
+    val filteredMedia = searchQuery.switchMap { query ->
+        when {
+            query.isBlank() -> media.asLiveData(viewModelScope.coroutineContext)
+            else -> media.map { mediaList ->
+                mediaList.filter { it.title?.contains(query, ignoreCase = true) ?: false }
+            }.asLiveData(viewModelScope.coroutineContext)
+        }
+    }
+
+    init {
+        searchQuery.postValue("")
+    }
 
     val selectedMedia: MutableLiveData<MediaItem> = MutableLiveData()
 
@@ -32,6 +42,10 @@ class WatchedViewModel @ViewModelInject constructor(
                 navigationHandler.navigateBack()
             }
         }
+    }
+
+    fun updateFilter(query: String) {
+        searchQuery.postValue(query)
     }
 
     override fun onMediaItemSelected(position: Int, item: MediaItem) {

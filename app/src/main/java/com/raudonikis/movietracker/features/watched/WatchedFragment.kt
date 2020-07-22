@@ -2,6 +2,7 @@ package com.raudonikis.movietracker.features.watched
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.GridLayoutManager
@@ -22,10 +23,17 @@ class WatchedFragment : Fragment(R.layout.fragment_watched) {
         super.onViewCreated(view, savedInstanceState)
         setUpRecyclerView()
         setUpObservers()
+        setUpListeners()
+    }
+
+    private fun setUpListeners() {
+        edit_search.doOnTextChanged { text, _, _, _ ->
+            viewModel.updateFilter(text.toString())
+        }
     }
 
     private fun setUpObservers() {
-        viewModel.media.observe(viewLifecycleOwner) { mediaAdapter.submitList(it) }
+        viewModel.filteredMedia.observe(viewLifecycleOwner) { mediaAdapter.submitList(it) }
     }
 
     private fun setUpRecyclerView() {
