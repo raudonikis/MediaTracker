@@ -17,6 +17,7 @@ object Versions {
     const val room = "2.2.5"
     const val liveData = "2.2.0"
     const val glide = "4.11.0"
+    const val rxBinding = "4.0.0"
 }
 
 object Sdk {
@@ -87,4 +88,8 @@ object Room {
 
 object Lifecycle {
     const val liveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.liveData}"
+}
+
+object Rx {
+    const val rxBinding = "com.jakewharton.rxbinding4:rxbinding:${Versions.rxBinding}"
 }

@@ -74,4 +74,6 @@ dependencies {
     kapt Room.compiler
     // Lifecycle
     implementation Lifecycle.liveData
+    // Rx
+    implementation Rx.rxBinding
 }

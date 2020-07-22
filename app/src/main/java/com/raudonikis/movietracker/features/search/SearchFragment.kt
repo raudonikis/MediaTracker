@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.jakewharton.rxbinding4.widget.textChangeEvents
 import com.raudonikis.movietracker.R
 import com.raudonikis.movietracker.extensions.hide
 import com.raudonikis.movietracker.extensions.hideKeyboard
@@ -16,6 +17,7 @@ import com.raudonikis.movietracker.model.MediaItemAdapter
 import com.raudonikis.movietracker.util.hiltNavGraphViewModels
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_search.*
+import java.util.concurrent.TimeUnit
 
 @AndroidEntryPoint
 class SearchFragment : Fragment(R.layout.fragment_search) {
@@ -61,25 +63,28 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     }
 
     private fun setUpListeners() {
-        button_search.setOnClickListener {
-            hideKeyboard()
-            viewModel.searchMedia()
-        }
-        edit_search.doOnTextChanged { text, _, _, _ ->
-            viewModel.searchQuery = text.toString()
-        }
-        edit_search.setOnEditorActionListener { _, actionId, _ ->
-            when (actionId) {
-                EditorInfo.IME_ACTION_GO -> {
-                    hideKeyboard()
+        edit_search.apply {
+            doOnTextChanged { text, _, _, _ ->
+                viewModel.searchQuery = text.toString()
+            }
+            textChangeEvents()
+                .debounce(DEBOUNCE_TEXT_CHANGE_IN_MILLIS, TimeUnit.MILLISECONDS)
+                .subscribe {
                     viewModel.searchMedia()
                 }
+            setOnEditorActionListener { _, actionId, _ ->
+                when (actionId) {
+                    EditorInfo.IME_ACTION_GO -> {
+                        hideKeyboard()
+                    }
+                }
+                true
             }
-            true
         }
     }
 
     companion object {
         private const val SPAN_COUNT_MEDIA = 2
+        private const val DEBOUNCE_TEXT_CHANGE_IN_MILLIS = 500L
     }
 }
