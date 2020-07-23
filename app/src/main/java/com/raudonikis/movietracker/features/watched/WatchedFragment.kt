@@ -24,11 +24,16 @@ class WatchedFragment : Fragment(R.layout.fragment_watched) {
         setUpRecyclerView()
         setUpObservers()
         setUpListeners()
+        restoreViews()
+    }
+
+    private fun restoreViews() {
+        edit_search.setText(viewModel.searchQuery.value)
     }
 
     private fun setUpListeners() {
         edit_search.doOnTextChanged { text, _, _, _ ->
-            viewModel.updateFilter(text.toString())
+            viewModel.updateSearchQuery(text.toString())
         }
     }
 

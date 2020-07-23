@@ -19,7 +19,7 @@ class WatchedViewModel @ViewModelInject constructor(
     // Data
     private val media = mediaRepository.getAllMedia()
         .map { mediaList -> mediaList.map { MediaDatabaseMapper.mapFromMediaEntityToItem(it) } }
-    private val searchQuery = MutableLiveData<String>("")
+    val searchQuery = MutableLiveData<String>("")
     val filteredMedia = searchQuery.switchMap { query ->
         when {
             query.isBlank() -> media.asLiveData(viewModelScope.coroutineContext)
@@ -39,7 +39,7 @@ class WatchedViewModel @ViewModelInject constructor(
         }
     }
 
-    fun updateFilter(query: String) {
+    fun updateSearchQuery(query: String) {
         searchQuery.postValue(query)
     }
 
