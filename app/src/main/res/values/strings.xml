@@ -12,4 +12,5 @@
 
     <string name="title_movies">Movies</string>
     <string name="title_tv">Tv</string>
+    <string name="label_no_results">No results</string>
 </resources>

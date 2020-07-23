@@ -5,4 +5,8 @@
     <dimen name="spacing_normal">16dp</dimen>
     <dimen name="spacing_medium">32dp</dimen>
     <dimen name="spacing_large">64dp</dimen>
+
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_normal">16sp</dimen>
+    <dimen name="text_size_medium">24sp</dimen>
 </resources>

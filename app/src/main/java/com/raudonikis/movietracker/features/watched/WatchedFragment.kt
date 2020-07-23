@@ -8,6 +8,7 @@ import androidx.lifecycle.observe
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.raudonikis.movietracker.R
+import com.raudonikis.movietracker.extensions.showIf
 import com.raudonikis.movietracker.model.MediaItemAdapter
 import com.raudonikis.movietracker.util.hiltNavGraphViewModels
 import dagger.hilt.android.AndroidEntryPoint
@@ -38,7 +39,10 @@ class WatchedFragment : Fragment(R.layout.fragment_watched) {
     }
 
     private fun setUpObservers() {
-        viewModel.filteredMedia.observe(viewLifecycleOwner) { mediaAdapter.submitList(it) }
+        viewModel.filteredMedia.observe(viewLifecycleOwner) { mediaList ->
+            mediaAdapter.submitList(mediaList)
+            text_no_results.showIf { mediaList.isEmpty() }
+        }
     }
 
     private fun setUpRecyclerView() {
