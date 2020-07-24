@@ -6,7 +6,6 @@ import androidx.lifecycle.*
 import com.raudonikis.movietracker.database.util.MediaDatabaseMapper
 import com.raudonikis.movietracker.extensions.io
 import com.raudonikis.movietracker.model.MediaItem
-import com.raudonikis.movietracker.model.MediaItemAdapter
 import com.raudonikis.movietracker.navigation.NavigationHandler
 import com.raudonikis.movietracker.navigation.Router
 import com.raudonikis.movietracker.repo.MediaRepository
@@ -17,7 +16,7 @@ class SearchViewModel @ViewModelInject constructor(
     private val mediaRepository: MediaRepository,
     private val navigationHandler: NavigationHandler,
     @Assisted private val savedStateHandle: SavedStateHandle
-) : ViewModel(), MediaItemAdapter.Interaction {
+) : ViewModel() {
 
     // Data
     // The media list returned by the search query
@@ -53,7 +52,7 @@ class SearchViewModel @ViewModelInject constructor(
         }
     }
 
-    override fun onMediaItemSelected(position: Int, item: MediaItem) {
+    fun onMediaItemSelected(item: MediaItem) {
         selectedMediaItemSearch.postValue(item)
         navigationHandler.navigate(Router.searchFragmentToDetailsRemoteFragment)
     }

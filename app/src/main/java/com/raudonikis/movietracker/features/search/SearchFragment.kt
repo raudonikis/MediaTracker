@@ -10,12 +10,10 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jakewharton.rxbinding4.widget.textChangeEvents
 import com.raudonikis.movietracker.R
-import com.raudonikis.movietracker.extensions.hide
-import com.raudonikis.movietracker.extensions.hideKeyboard
-import com.raudonikis.movietracker.extensions.show
-import com.raudonikis.movietracker.extensions.showIf
-import com.raudonikis.movietracker.model.MediaItemAdapter
+import com.raudonikis.movietracker.extensions.*
+import com.raudonikis.movietracker.model.MediaItem
 import com.raudonikis.movietracker.util.hiltNavGraphViewModels
+import com.raudonikis.movietracker.util.recyclerview.RecyclerAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_search.*
 import java.util.concurrent.TimeUnit
@@ -24,7 +22,11 @@ import java.util.concurrent.TimeUnit
 class SearchFragment : Fragment(R.layout.fragment_search) {
 
     private val viewModel by hiltNavGraphViewModels<SearchViewModel>(R.id.nav_graph)
-    private lateinit var mediaAdapter: MediaItemAdapter
+    private val mediaAdapter =
+        RecyclerAdapter<MediaItem>(
+            R.layout.item_movie,
+            { item -> item.bindToView(this) },
+            { viewModel.onMediaItemSelected(this) })
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -44,14 +46,13 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
                 .onLoading { progress_search.show() }
                 .onSuccess { mediaList ->
                     progress_search.hide()
-                    mediaAdapter.submitList(mediaList)
+                    mediaAdapter.updateList(mediaList)
                     text_no_results.showIf { mediaList.isEmpty() }
                 }
         }
     }
 
     private fun setUpRecyclerView() {
-        mediaAdapter = MediaItemAdapter(viewModel)
         recycler_view.apply {
             adapter = mediaAdapter
             layoutManager = object : GridLayoutManager(context, SPAN_COUNT_MEDIA) {
@@ -60,7 +61,6 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
                     return true
                 }
             }
-            hasFixedSize()
         }
     }
 
