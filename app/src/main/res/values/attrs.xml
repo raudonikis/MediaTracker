@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="spacingSmall" format="reference" />
+    <attr name="spacingNormal" format="reference" />
+    <attr name="spacingMedium" format="reference" />
+    <attr name="spacingLarge" format="reference" />
+</resources>
