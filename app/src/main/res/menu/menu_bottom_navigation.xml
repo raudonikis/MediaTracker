@@ -6,7 +6,7 @@
         android:icon="@drawable/ic_movie"
         android:title="Movies"/>
     <item
-        android:id="@+id/tvSeriesFragment"
+        android:id="@+id/tvShowsFragment"
         android:enabled="true"
         android:icon="@drawable/ic_tv"
         android:title="TV"/>

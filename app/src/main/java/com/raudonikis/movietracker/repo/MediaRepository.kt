@@ -5,10 +5,7 @@ import com.raudonikis.movietracker.api.util.MediaApiMapper
 import com.raudonikis.movietracker.database.daos.MediaDao
 import com.raudonikis.movietracker.database.entities.MediaEntity
 import com.raudonikis.movietracker.database.util.MediaDatabaseMapper
-import com.raudonikis.movietracker.model.MediaItem
-import com.raudonikis.movietracker.model.MediaType
-import com.raudonikis.movietracker.model.Movie
-import com.raudonikis.movietracker.model.TimeWindow
+import com.raudonikis.movietracker.model.*
 import com.raudonikis.movietracker.util.Outcome
 import com.raudonikis.movietracker.util.apiCall
 import kotlinx.coroutines.flow.Flow
@@ -81,6 +78,12 @@ class MediaRepository @Inject constructor(
     fun getAllMovies(): Flow<List<Movie>> {
         return mediaDao.getAllMovies().map { mediaList ->
             mediaList.map { MediaDatabaseMapper.mapFromMediaEntityToMovie(it) }
+        }
+    }
+
+    fun getAllTvShows(): Flow<List<TvShow>> {
+        return mediaDao.getAllTvShows().map { mediaList ->
+            mediaList.map { MediaDatabaseMapper.mapFromMediaEntityToTvShow(it) }
         }
     }
 

@@ -3,6 +3,7 @@ package com.raudonikis.movietracker.database.util
 import com.raudonikis.movietracker.database.entities.MediaEntity
 import com.raudonikis.movietracker.model.MediaItem
 import com.raudonikis.movietracker.model.Movie
+import com.raudonikis.movietracker.model.TvShow
 
 object MediaDatabaseMapper {
 
@@ -42,6 +43,19 @@ object MediaDatabaseMapper {
             genreIds = mediaEntity.genreIds ?: emptyList(),
             title = mediaEntity.title,
             originalTitle = mediaEntity.originalTitle,
+            popularity = mediaEntity.popularity,
+            overview = mediaEntity.overview,
+            posterPath = mediaEntity.posterPath,
+            voteAverage = mediaEntity.voteAverage
+        )
+    }
+
+    fun mapFromMediaEntityToTvShow(mediaEntity: MediaEntity): TvShow {
+        return TvShow(
+            id = mediaEntity.id,
+            genreIds = mediaEntity.genreIds ?: emptyList(),
+            name = mediaEntity.name,
+            originalName = mediaEntity.originalName,
             popularity = mediaEntity.popularity,
             overview = mediaEntity.overview,
             posterPath = mediaEntity.posterPath,

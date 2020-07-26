@@ -43,4 +43,9 @@
         android:name="com.raudonikis.movietracker.features.movies.MoviesFragment"
         android:label="MoviesFragment"
         tools:layout="@layout/fragment_movies" />
+    <fragment
+        android:id="@+id/tvShowsFragment"
+        android:name="com.raudonikis.movietracker.features.tvshows.TvShowsFragment"
+        android:label="TvShowsFragment"
+        tools:layout="@layout/fragment_tv_shows" />
 </navigation>
