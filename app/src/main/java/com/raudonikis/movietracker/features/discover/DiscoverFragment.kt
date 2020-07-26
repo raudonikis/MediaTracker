@@ -18,25 +18,25 @@ class DiscoverFragment : Fragment(R.layout.fragment_discover) {
 
     private val viewModel by hiltNavGraphViewModels<DiscoverViewModel>(R.id.nav_graph)
     private val trendingMoviesAdapter =
-        RecyclerAdapter<MediaItem>(R.layout.item_movie_discover, { item ->
+        RecyclerAdapter<MediaItem>(R.layout.item_media_discover, { item ->
             item.bindToView(this)
         }, {
             //
         })
     private val trendingTvAdapter =
-        RecyclerAdapter<MediaItem>(R.layout.item_movie_discover, { item ->
+        RecyclerAdapter<MediaItem>(R.layout.item_media_discover, { item ->
             item.bindToView(this)
         }, {
             //
         })
     private val popularMoviesAdapter =
-        RecyclerAdapter<MediaItem>(R.layout.item_movie_discover, { item ->
+        RecyclerAdapter<MediaItem>(R.layout.item_media_discover, { item ->
             item.bindToView(this)
         }, {
             //
         })
     private val popularTvAdapter =
-        RecyclerAdapter<MediaItem>(R.layout.item_movie_discover, { item ->
+        RecyclerAdapter<MediaItem>(R.layout.item_media_discover, { item ->
             item.bindToView(this)
         }, {
             //

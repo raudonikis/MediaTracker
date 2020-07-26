@@ -24,7 +24,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     private val viewModel by hiltNavGraphViewModels<SearchViewModel>(R.id.nav_graph)
     private val mediaAdapter =
         RecyclerAdapter<MediaItem>(
-            R.layout.item_movie,
+            R.layout.item_media,
             { item -> item.bindToView(this) },
             { viewModel.onMediaItemSelected(this) })
 

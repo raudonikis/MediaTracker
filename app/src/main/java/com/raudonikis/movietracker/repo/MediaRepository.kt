@@ -7,10 +7,12 @@ import com.raudonikis.movietracker.database.entities.MediaEntity
 import com.raudonikis.movietracker.database.util.MediaDatabaseMapper
 import com.raudonikis.movietracker.model.MediaItem
 import com.raudonikis.movietracker.model.MediaType
+import com.raudonikis.movietracker.model.Movie
 import com.raudonikis.movietracker.model.TimeWindow
 import com.raudonikis.movietracker.util.Outcome
 import com.raudonikis.movietracker.util.apiCall
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class MediaRepository @Inject constructor(
@@ -75,6 +77,12 @@ class MediaRepository @Inject constructor(
     }
 
     fun getAllMedia(): Flow<List<MediaEntity>> = mediaDao.getAllMedia()
+
+    fun getAllMovies(): Flow<List<Movie>> {
+        return mediaDao.getAllMovies().map { mediaList ->
+            mediaList.map { MediaDatabaseMapper.mapFromMediaEntityToMovie(it) }
+        }
+    }
 
     fun getMedia(id: Int): Flow<MediaEntity?> = mediaDao.getMedia(id)
 }

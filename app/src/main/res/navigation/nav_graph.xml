@@ -38,4 +38,9 @@
         android:name="com.raudonikis.movietracker.features.details.local.DetailsLocalFragment"
         android:label="DetailsLocalFragment"
         tools:layout="@layout/fragment_details_local" />
+    <fragment
+        android:id="@+id/moviesFragment"
+        android:name="com.raudonikis.movietracker.features.movies.MoviesFragment"
+        android:label="MoviesFragment"
+        tools:layout="@layout/fragment_movies" />
 </navigation>

@@ -5,7 +5,7 @@ import com.bumptech.glide.Glide
 import com.raudonikis.movietracker.R
 import com.raudonikis.movietracker.api.util.MediaApiConstants
 import com.raudonikis.movietracker.model.MediaItem
-import kotlinx.android.synthetic.main.item_movie.view.*
+import kotlinx.android.synthetic.main.item_media.view.*
 
 fun MediaItem.bindToView(view: View) {
     view.image_poster.setImageResource(R.drawable.placeholder_poster)
