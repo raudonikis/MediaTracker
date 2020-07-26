@@ -2,7 +2,7 @@ package com.raudonikis.movietracker.api.response
 
 import com.google.gson.annotations.SerializedName
 
-data class MultiResultResponse(
+data class MediaResultResponse(
     @SerializedName("adult")
     val isAdult: Boolean?,
     @SerializedName("backdrop_path")

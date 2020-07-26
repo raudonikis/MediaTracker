@@ -1,11 +1,13 @@
 package com.raudonikis.movietracker.repo
 
 import com.raudonikis.movietracker.api.MediaApi
+import com.raudonikis.movietracker.model.TimeWindow
 import com.raudonikis.movietracker.api.util.MediaApiMapper
 import com.raudonikis.movietracker.database.daos.MediaDao
 import com.raudonikis.movietracker.database.entities.MediaEntity
 import com.raudonikis.movietracker.database.util.MediaDatabaseMapper
 import com.raudonikis.movietracker.model.MediaItem
+import com.raudonikis.movietracker.model.MediaType
 import com.raudonikis.movietracker.util.Outcome
 import com.raudonikis.movietracker.util.apiCall
 import kotlinx.coroutines.flow.Flow
@@ -21,6 +23,20 @@ class MediaRepository @Inject constructor(
             .map { multiResponse ->
                 MediaApiMapper.mapFromMultiSearchResponse(multiResponse)
             }
+    }
+
+    suspend fun getTrendingMedia(
+        mediaType: MediaType,
+        timeWindow: TimeWindow
+    ): Outcome<List<MediaItem>> {
+        return when (mediaType) {
+            MediaType.UNDEFINED, MediaType.PERSON -> Outcome.successEmpty()
+            else -> apiCall {
+                mediaApi.getTrendingMedia(mediaType.toString(), timeWindow.toString())
+            }.map { multiRespone ->
+                MediaApiMapper.mapFromMultiSearchResponse(multiRespone)
+            }
+        }
     }
 
     suspend fun addToWatchedList(media: MediaItem) {
