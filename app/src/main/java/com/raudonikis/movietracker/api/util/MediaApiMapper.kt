@@ -6,7 +6,10 @@ import com.raudonikis.movietracker.model.MediaType
 
 object MediaApiMapper {
 
-    fun mapFromMultiSearchResponse(mediaResultListResponse: MediaResultListResponse): List<MediaItem> =
+    fun mapFromMediaResultListResponse(
+        mediaResultListResponse: MediaResultListResponse,
+        mediaType: MediaType? = null
+    ): List<MediaItem> =
         mediaResultListResponse.results?.map { mediaResponse ->
             MediaItem(
                 id = mediaResponse.id,
@@ -27,7 +30,9 @@ object MediaApiMapper {
                 isVideo = mediaResponse.isVideo,
                 voteAverage = mediaResponse.voteAverage,
                 voteCount = mediaResponse.voteCount,
-                mediaType = MediaType.fromString(mediaResponse.mediaType)
+                // TODO make sure the mediaType is set
+                mediaType = mediaType ?: MediaType.fromString(mediaResponse.mediaType)
+                ?: throw Exception()
             )
         } ?: emptyList()
 }

@@ -29,15 +29,15 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_trending_movies"
             android:layout_width="0dp"
-            android:layout_height="200dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@id/text_title_tv"
+            app:layout_constraintBottom_toTopOf="@id/text_title_trending_tv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_title_movies" />
 
         <TextView
-            android:id="@+id/text_title_tv"
+            android:id="@+id/text_title_trending_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TV"
@@ -48,12 +48,63 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_trending_tv"
             android:layout_width="0dp"
-            android:layout_height="200dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_title_tv" />
+            app:layout_constraintTop_toBottomOf="@id/text_title_trending_tv" />
+
+        <TextView
+            android:id="@+id/text_title_popular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Popular"
+            android:textSize="36sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/recycler_trending_tv" />
+
+        <TextView
+            android:id="@+id/text_title_popular_movies"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Movies"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_title_popular" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_popular_movies"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_title_popular_movies" />
+
+        <TextView
+            android:id="@+id/text_title_popular_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TV"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/recycler_popular_movies" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_popular_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@id/space_bottom_navigation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_title_popular_tv" />
+
+        <Space
+            android:id="@+id/space_bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

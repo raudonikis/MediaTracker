@@ -16,4 +16,10 @@ interface MediaApi {
         @Path("media_type") mediaType: String,
         @Path("time_window") timeWindow: String
     ): Response<MediaResultListResponse>
+
+    @GET("movie/popular")
+    suspend fun getPopularMovies(): Response<MediaResultListResponse>
+
+    @GET("tv/popular")
+    suspend fun getPopularTvSeries(): Response<MediaResultListResponse>
 }
