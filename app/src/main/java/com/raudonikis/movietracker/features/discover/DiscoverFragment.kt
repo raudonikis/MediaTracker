@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.raudonikis.movietracker.R
 import com.raudonikis.movietracker.extensions.bindToView
 import com.raudonikis.movietracker.model.MediaItem
+import com.raudonikis.movietracker.util.hiltNavGraphViewModels
 import com.raudonikis.movietracker.util.recyclerview.RecyclerAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_discover.*
@@ -16,7 +17,7 @@ import kotlinx.android.synthetic.main.fragment_discover.*
 @AndroidEntryPoint
 class DiscoverFragment : Fragment(R.layout.fragment_discover) {
 
-    private val viewModel by viewModels<DiscoverViewModel>()
+    private val viewModel by hiltNavGraphViewModels<DiscoverViewModel>(R.id.nav_graph)
     private val trendingMoviesAdapter = RecyclerAdapter<MediaItem>(R.layout.item_movie_discover, { item ->
         item.bindToView(this)
     }, {

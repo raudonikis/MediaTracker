@@ -1,6 +1,7 @@
 package com.raudonikis.movietracker.features.discover
 
 import androidx.hilt.lifecycle.ViewModelInject
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -14,11 +15,13 @@ import com.raudonikis.movietracker.repo.MediaRepository
 class DiscoverViewModel @ViewModelInject constructor(
     private val mediaRepository: MediaRepository,
     private val navigationHandler: NavigationHandler
-) :
-    ViewModel() {
+) : ViewModel() {
 
-    val trendingMovies = MutableLiveData<List<MediaItem>>()
-    val trendingTv = MutableLiveData<List<MediaItem>>()
+    // Data
+    private val _trendingMovies = MutableLiveData<List<MediaItem>>()
+    val trendingMovies: LiveData<List<MediaItem>> = _trendingMovies
+    private val _trendingTv = MutableLiveData<List<MediaItem>>()
+    val trendingTv: LiveData<List<MediaItem>> = _trendingTv
 
     init {
         getTrendingMedia()
@@ -27,12 +30,12 @@ class DiscoverViewModel @ViewModelInject constructor(
     private fun getTrendingMedia() {
         viewModelScope.io {
             mediaRepository.getTrendingMedia(MediaType.MOVIE, TimeWindow.DAY)
-                .onSuccess { mediaItems ->
-                    trendingMovies.postValue(mediaItems)
+                .onSuccess { movies ->
+                    _trendingMovies.postValue(movies)
                 }
             mediaRepository.getTrendingMedia(MediaType.TV, TimeWindow.DAY)
-                .onSuccess { mediaItems ->
-                    trendingTv.postValue(mediaItems)
+                .onSuccess { tvSeries ->
+                    _trendingTv.postValue(tvSeries)
                 }
         }
     }
