@@ -4,25 +4,20 @@
         android:id="@+id/moviesFragment"
         android:enabled="true"
         android:icon="@drawable/ic_movie"
-        android:title="Movies"/>
+        android:title="@string/title_movies"/>
     <item
         android:id="@+id/tvShowsFragment"
         android:enabled="true"
         android:icon="@drawable/ic_tv"
-        android:title="TV"/>
+        android:title="@string/title_tv"/>
     <item
         android:id="@+id/discoverFragment"
         android:enabled="true"
         android:icon="@drawable/ic_popcorn"
-        android:title="Discover"/>
+        android:title="@string/title_discover"/>
     <item
         android:id="@+id/searchFragment"
         android:enabled="true"
         android:icon="@drawable/ic_search"
-        android:title="Search"/>
-    <item
-        android:id="@+id/watchedFragment"
-        android:enabled="true"
-        android:icon="@drawable/ic_seen"
-        android:title="Watched"/>
+        android:title="@string/title_search"/>
 </menu>

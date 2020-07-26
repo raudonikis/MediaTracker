@@ -10,7 +10,10 @@
 
     <string name="hint_search">Search</string>
 
-    <string name="title_movies">Movies</string>
-    <string name="title_tv">Tv</string>
     <string name="label_no_results">No results</string>
+
+    <string name="title_discover">Discover</string>
+    <string name="title_movies">Movies</string>
+    <string name="title_search">Search</string>
+    <string name="title_tv">TV</string>
 </resources>
