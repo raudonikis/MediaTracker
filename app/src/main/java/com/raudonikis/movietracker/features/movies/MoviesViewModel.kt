@@ -5,6 +5,7 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.raudonikis.movietracker.model.Movie
 import com.raudonikis.movietracker.navigation.NavigationHandler
+import com.raudonikis.movietracker.navigation.Router
 import com.raudonikis.movietracker.repo.MediaRepository
 import kotlinx.coroutines.flow.map
 
@@ -32,6 +33,6 @@ class MoviesViewModel @ViewModelInject constructor(
     }
 
     fun onMovieSelected(movie: Movie) {
-
+        navigationHandler.navigate(Router.moviesFragmentToMovieDetailsFragment(movie))
     }
 }

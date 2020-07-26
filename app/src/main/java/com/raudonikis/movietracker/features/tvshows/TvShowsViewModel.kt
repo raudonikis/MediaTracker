@@ -3,9 +3,9 @@ package com.raudonikis.movietracker.features.tvshows
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
-import com.raudonikis.movietracker.model.Movie
 import com.raudonikis.movietracker.model.TvShow
 import com.raudonikis.movietracker.navigation.NavigationHandler
+import com.raudonikis.movietracker.navigation.Router
 import com.raudonikis.movietracker.repo.MediaRepository
 import kotlinx.coroutines.flow.map
 
@@ -33,6 +33,6 @@ class TvShowsViewModel @ViewModelInject constructor(
     }
 
     fun onTvShowSelected(tvShow: TvShow) {
-
+        navigationHandler.navigate(Router.tvShowsFragmentToTvShowDetailsFragment(tvShow))
     }
 }

@@ -27,6 +27,9 @@
         <action
             android:id="@+id/action_searchFragment_to_detailsRemoteFragment"
             app:destination="@id/detailsRemoteFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_movieDetailsFragment"
+            app:destination="@id/movieDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailsRemoteFragment"
@@ -42,10 +45,36 @@
         android:id="@+id/moviesFragment"
         android:name="com.raudonikis.movietracker.features.movies.MoviesFragment"
         android:label="MoviesFragment"
-        tools:layout="@layout/fragment_movies" />
+        tools:layout="@layout/fragment_movies" >
+        <action
+            android:id="@+id/action_moviesFragment_to_movieDetailsFragment"
+            app:destination="@id/movieDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/tvShowsFragment"
         android:name="com.raudonikis.movietracker.features.tvshows.TvShowsFragment"
         android:label="TvShowsFragment"
-        tools:layout="@layout/fragment_tv_shows" />
+        tools:layout="@layout/fragment_tv_shows" >
+        <action
+            android:id="@+id/action_tvShowsFragment_to_tvShowDetailsFragment"
+            app:destination="@id/tvShowDetailsFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_details_local"
+        android:id="@+id/movieDetailsFragment"
+        android:name="com.raudonikis.movietracker.features.details.movie.MovieDetailsFragment"
+        android:label="MovieDetailsFragment" >
+        <argument
+            android:name="movie"
+            app:argType="com.raudonikis.movietracker.model.Movie" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_details_local"
+        android:id="@+id/tvShowDetailsFragment"
+        android:name="com.raudonikis.movietracker.features.details.tvshow.TvShowDetailsFragment"
+        android:label="TvShowDetailsFragment" >
+        <argument
+            android:name="tvShow"
+            app:argType="com.raudonikis.movietracker.model.TvShow" />
+    </fragment>
 </navigation>
