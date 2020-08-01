@@ -19,7 +19,7 @@
         app:startIconDrawable="@drawable/ic_search">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edit_search"
+            android:id="@+id/edit_text_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/hint_search"
@@ -28,7 +28,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_tv"
+        android:id="@+id/recycler_movies"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:paddingHorizontal="?spacingNormal"
@@ -37,7 +37,7 @@
         app:layout_constraintTop_toBottomOf="@id/text_input_search" />
 
     <TextView
-        android:id="@+id/text_no_results"
+        android:id="@+id/label_no_results"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_outlined"
