@@ -1,4 +1,4 @@
-package com.raudonikis.movietracker.features.discover
+package com.raudonikis.movietracker.features.discover.ui
 
 import android.os.Bundle
 import android.view.View

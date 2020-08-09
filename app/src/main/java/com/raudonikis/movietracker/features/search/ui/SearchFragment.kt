@@ -1,4 +1,4 @@
-package com.raudonikis.movietracker.features.search
+package com.raudonikis.movietracker.features.search.ui
 
 import android.os.Bundle
 import android.view.View
@@ -55,7 +55,9 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     private fun setUpRecyclerView() {
         recycler_view.apply {
             adapter = mediaAdapter
-            layoutManager = object : GridLayoutManager(context, SPAN_COUNT_MEDIA) {
+            layoutManager = object : GridLayoutManager(context,
+                SPAN_COUNT_MEDIA
+            ) {
                 override fun checkLayoutParams(lp: RecyclerView.LayoutParams?): Boolean {
                     lp?.height = height / SPAN_COUNT_MEDIA
                     return true

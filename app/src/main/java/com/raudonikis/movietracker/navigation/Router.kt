@@ -1,7 +1,7 @@
 package com.raudonikis.movietracker.navigation
 
 import com.raudonikis.movietracker.features.movies.MoviesFragmentDirections
-import com.raudonikis.movietracker.features.search.SearchFragmentDirections
+import com.raudonikis.movietracker.features.search.ui.SearchFragmentDirections
 import com.raudonikis.movietracker.features.tvshows.TvShowsFragmentDirections
 import com.raudonikis.movietracker.features.watched.WatchedFragmentDirections
 import com.raudonikis.movietracker.model.Movie

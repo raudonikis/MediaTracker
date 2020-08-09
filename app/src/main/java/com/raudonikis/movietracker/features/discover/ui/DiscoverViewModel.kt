@@ -1,4 +1,4 @@
-package com.raudonikis.movietracker.features.discover
+package com.raudonikis.movietracker.features.discover.ui
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
@@ -7,8 +7,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.raudonikis.movietracker.extensions.io
 import com.raudonikis.movietracker.model.MediaItem
-import com.raudonikis.movietracker.model.MediaType
-import com.raudonikis.movietracker.model.TimeWindow
 import com.raudonikis.movietracker.navigation.NavigationHandler
 import com.raudonikis.movietracker.repo.MediaRepository
 
@@ -47,11 +45,11 @@ class DiscoverViewModel @ViewModelInject constructor(
 
     private fun getTrendingMedia() {
         viewModelScope.io {
-            mediaRepository.getTrendingMedia(MediaType.MOVIE, TimeWindow.DAY)
+            mediaRepository.getTrendingMovies()
                 .onSuccess { movies ->
                     _trendingMovies.postValue(movies)
                 }
-            mediaRepository.getTrendingMedia(MediaType.TV, TimeWindow.DAY)
+            mediaRepository.getTrendingTvSeries()
                 .onSuccess { tvSeries ->
                     _trendingTv.postValue(tvSeries)
                 }

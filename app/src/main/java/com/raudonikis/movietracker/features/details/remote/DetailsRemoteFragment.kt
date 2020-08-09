@@ -9,7 +9,7 @@ import com.raudonikis.movietracker.R
 import com.raudonikis.movietracker.api.util.MediaApiConstants
 import com.raudonikis.movietracker.extensions.enableIf
 import com.raudonikis.movietracker.extensions.isNull
-import com.raudonikis.movietracker.features.search.SearchViewModel
+import com.raudonikis.movietracker.features.search.ui.SearchViewModel
 import com.raudonikis.movietracker.model.MediaItem
 import com.raudonikis.movietracker.util.hiltNavGraphViewModels
 import dagger.hilt.android.AndroidEntryPoint

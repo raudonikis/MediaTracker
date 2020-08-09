@@ -1,4 +1,4 @@
-package com.raudonikis.movietracker.features.search
+package com.raudonikis.movietracker.features.search.ui
 
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
