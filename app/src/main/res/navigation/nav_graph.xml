@@ -16,12 +16,12 @@
     </fragment>
     <fragment
         android:id="@+id/discoverFragment"
-        android:name="com.raudonikis.movietracker.features.discover.ui.DiscoverFragment"
+        android:name="com.raudonikis.movietracker.ui.discover.DiscoverFragment"
         android:label="DiscoverFragment"
         tools:layout="@layout/fragment_discover" />
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.raudonikis.movietracker.features.search.ui.SearchFragment"
+        android:name="com.raudonikis.movietracker.ui.search.SearchFragment"
         android:label="SearchFragment"
         tools:layout="@layout/fragment_search">
         <action
@@ -33,17 +33,17 @@
     </fragment>
     <fragment
         android:id="@+id/detailsRemoteFragment"
-        android:name="com.raudonikis.movietracker.features.details.remote.DetailsRemoteFragment"
+        android:name="com.raudonikis.movietracker.ui.details.remote.DetailsRemoteFragment"
         android:label="DetailsRemoteFragment"
         tools:layout="@layout/fragment_details_remote" />
     <fragment
         android:id="@+id/detailsLocalFragment"
-        android:name="com.raudonikis.movietracker.features.details.local.DetailsLocalFragment"
+        android:name="com.raudonikis.movietracker.ui.details.local.DetailsLocalFragment"
         android:label="DetailsLocalFragment"
         tools:layout="@layout/fragment_details_local" />
     <fragment
         android:id="@+id/moviesFragment"
-        android:name="com.raudonikis.movietracker.features.movies.MoviesFragment"
+        android:name="com.raudonikis.movietracker.ui.movies.MoviesFragment"
         android:label="MoviesFragment"
         tools:layout="@layout/fragment_movies" >
         <action
@@ -52,7 +52,7 @@
     </fragment>
     <fragment
         android:id="@+id/tvShowsFragment"
-        android:name="com.raudonikis.movietracker.features.tvshows.TvShowsFragment"
+        android:name="com.raudonikis.movietracker.ui.tvshows.TvShowsFragment"
         android:label="TvShowsFragment"
         tools:layout="@layout/fragment_tv_shows" >
         <action
@@ -62,7 +62,7 @@
     <fragment
         tools:layout="@layout/fragment_details_local"
         android:id="@+id/movieDetailsFragment"
-        android:name="com.raudonikis.movietracker.features.details.movie.MovieDetailsFragment"
+        android:name="com.raudonikis.movietracker.ui.details.movie.MovieDetailsFragment"
         android:label="MovieDetailsFragment" >
         <argument
             android:name="movie"
@@ -71,7 +71,7 @@
     <fragment
         tools:layout="@layout/fragment_details_local"
         android:id="@+id/tvShowDetailsFragment"
-        android:name="com.raudonikis.movietracker.features.details.tvshow.TvShowDetailsFragment"
+        android:name="com.raudonikis.movietracker.ui.details.tvshow.TvShowDetailsFragment"
         android:label="TvShowDetailsFragment" >
         <argument
             android:name="tvShow"

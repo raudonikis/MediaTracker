@@ -3,8 +3,8 @@ package com.raudonikis.movietracker.extensions
 import android.view.View
 import com.bumptech.glide.Glide
 import com.raudonikis.movietracker.R
-import com.raudonikis.movietracker.api.util.MediaApiConstants
-import com.raudonikis.movietracker.model.MediaItem
+import com.raudonikis.movietracker.data.api.util.MediaApiConstants
+import com.raudonikis.movietracker.domain.model.MediaItem
 import kotlinx.android.synthetic.main.item_media.view.*
 
 fun MediaItem.bindToView(view: View) {

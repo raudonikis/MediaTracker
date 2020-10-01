@@ -1,6 +1,6 @@
 package com.raudonikis.movietracker.util
 
-import com.raudonikis.movietracker.model.Error
+import com.raudonikis.movietracker.domain.model.Error
 import timber.log.Timber
 
 sealed class Outcome<out T> {

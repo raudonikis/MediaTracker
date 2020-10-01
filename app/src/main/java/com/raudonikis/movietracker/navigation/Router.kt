@@ -4,8 +4,8 @@ import com.raudonikis.movietracker.features.movies.MoviesFragmentDirections
 import com.raudonikis.movietracker.features.search.ui.SearchFragmentDirections
 import com.raudonikis.movietracker.features.tvshows.TvShowsFragmentDirections
 import com.raudonikis.movietracker.features.watched.WatchedFragmentDirections
-import com.raudonikis.movietracker.model.Movie
-import com.raudonikis.movietracker.model.TvShow
+import com.raudonikis.movietracker.domain.model.Movie
+import com.raudonikis.movietracker.domain.model.TvShow
 
 object Router {
     val searchFragmentToDetailsRemoteFragment =
